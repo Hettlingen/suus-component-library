@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, CSSProperties, MouseEvent, ReactNode } from "react";
-import "./input-button.css";
+import styles from "./input-button.module.css";
+
 
 export type ButtonProps = {
     label: string;
@@ -21,14 +22,14 @@ export default function InputButton({
                                         loading = false,
                                         fullWidth = false,
                                         variant = "primary",
-                                        colorToken = "--colorProductSugarcane",
+                                        colorToken,
                                         icon,
                                         className = "",
                                         ...rest
                                     }: ButtonProps) {
     const isDisabled = disabled || loading;
 
-    const style = {
+    const styleButtonColor = {
         "--btn-color": `var(${colorToken})`,
     } as CSSProperties;
 
@@ -37,12 +38,12 @@ export default function InputButton({
             type={type}
             onClick={onClick}
             disabled={isDisabled}
-            style={style}
+            style={styleButtonColor}
             className={[
-                "suus-button",
-                `suus-button--${variant}`,
-                fullWidth ? "btn--full" : "",
-                loading ? "btn--loading" : "",
+                styles.suusButton,
+                styles[variant],
+                fullWidth ? styles.full : "",
+                loading ? styles.loading : "",
                 className,
             ]
                 .filter(Boolean)
@@ -52,13 +53,13 @@ export default function InputButton({
         >
             {loading ? (
                 <span
-                    className={`btn__loader ${variant === "primary" ? "btn__loader--primary" : "btn__loader--secondary"}`}
+                    className={`${styles.loader} ${variant === "primary" ? "" : styles.loaderSecondary}`}
                     aria-hidden="true"
                 />
             ) : (
                 <>
-                    {icon ? <span className="btn__icon">{icon}</span> : null}
-                    <span className={`btn__label ${variant === "primary" ? "btn__loader--primary" : "btn__loader--secondary"}`}>{label}</span>
+                    {icon ? <span className={styles.icon}>{icon}</span> : null}
+                    <span className={styles.label}>{label}</span>
                 </>
             )}
         </button>

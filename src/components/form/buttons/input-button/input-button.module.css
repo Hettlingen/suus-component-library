@@ -1,4 +1,4 @@
-.suus-button {
+.suusButton {
     --btn-color: var(--colors-juice-sugarcane);
     --btn-text-color-primary: #ffffff;
     --btn-text-color-secondary: #272727;
@@ -13,10 +13,9 @@
     gap: 0.75rem;
 
     min-height: 3rem;
-    /*min-width: 18.5rem;*/
     padding: 0 2rem;
 
-    border-radius: 999px;
+    border-radius: 50px;
     border: 0 solid transparent;
     outline: none;
 
@@ -42,20 +41,20 @@
 }
 
 @media (max-width: 480px) {
-    .suus-button {
+    .suusButton {
         width: 100%;
         min-width: 0;
     }
 }
 
 /* FULL WIDTH */
-.suus-button--full {
+.full {
     width: 100%;
     min-width: 0;
 }
 
 /* CONTENT */
-.suus-button__icon {
+.icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -64,16 +63,17 @@
     flex-shrink: 0;
 }
 
-.suus-button__label {
+.label {
     display: inline-block;
 }
 
 /* =========================
    PRIMARY
    ========================= */
-.suus-button--primary {
+.primary {
     color: var(--btn-text-color-primary);
     border-color: transparent;
+
     background:
             linear-gradient(
                     180deg,
@@ -87,7 +87,7 @@
             0 10px 18px rgba(0, 0, 0, 0.15);
 }
 
-.suus-button--primary:hover:not(:disabled) {
+.primary:hover:not(:disabled) {
     transform: translateY(-1px);
     box-shadow:
             inset 0 2px 0 rgba(255, 255, 255, 0.2),
@@ -95,7 +95,7 @@
             0 12px 22px rgba(0, 0, 0, 0.18);
 }
 
-.suus-button--primary:focus-visible:not(:disabled) {
+.primary:focus-visible:not(:disabled) {
     box-shadow:
             inset 0 0 0 3px color-mix(in srgb, var(--btn-color) 72%, white 28%),
             inset 0 2px 0 rgba(255, 255, 255, 0.18),
@@ -103,7 +103,7 @@
             0 0 0 4px rgba(255, 255, 255, 0.9);
 }
 
-.suus-button--primary:active:not(:disabled) {
+.primary:active:not(:disabled) {
     transform: translateY(1px);
     box-shadow:
             inset 0 2px 6px rgba(0, 0, 0, 0.12),
@@ -113,7 +113,7 @@
 /* =========================
    SECONDARY
    ========================= */
-.suus-button--secondary {
+.secondary {
     background: #ffffff;
     color: var(--btn-color);
     border-color: var(--btn-color);
@@ -123,7 +123,7 @@
             0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-.suus-button--secondary:hover:not(:disabled) {
+.secondary:hover:not(:disabled) {
     transform: translateY(-1px);
     background: color-mix(in srgb, var(--btn-color) 8%, white 92%);
     box-shadow:
@@ -131,13 +131,13 @@
             0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
-.suus-button--secondary:focus-visible:not(:disabled) {
+.secondary:focus-visible:not(:disabled) {
     box-shadow:
             inset 0 0 0 2px color-mix(in srgb, var(--btn-color) 18%, white 82%),
             0 0 0 4px rgba(255, 255, 255, 0.95);
 }
 
-.suus-button--secondary:active:not(:disabled) {
+.secondary:active:not(:disabled) {
     transform: translateY(1px);
     background: color-mix(in srgb, var(--btn-color) 12%, white 88%);
     box-shadow:
@@ -147,19 +147,19 @@
 /* =========================
    DISABLED
    ========================= */
-.suus-button:disabled {
+.suusButton:disabled {
     cursor: not-allowed;
     transform: none;
 }
 
-.suus-button--primary:disabled {
+.primary:disabled {
     background: var(--btn-disabled-bg);
     color: var(--btn-disabled-text);
     border-color: transparent;
     box-shadow: none;
 }
 
-.suus-button--secondary:disabled {
+.secondary:disabled {
     background: #ffffff;
     color: var(--btn-disabled-text-secondary);
     border-color: var(--btn-disabled-border);
@@ -169,11 +169,11 @@
 /* =========================
    LOADING
    ========================= */
-.suus-button--loading {
+.loading {
     pointer-events: none;
 }
 
-.suus-button__loader {
+.loader {
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 999px;
@@ -182,7 +182,7 @@
     animation: btn-spin 0.7s linear infinite;
 }
 
-.suus-button__loader--secondary {
+.loaderSecondary {
     border: 2px solid color-mix(in srgb, var(--btn-color) 20%, white 80%);
     /*border-top-color: var(--btn-color);*/
 }
