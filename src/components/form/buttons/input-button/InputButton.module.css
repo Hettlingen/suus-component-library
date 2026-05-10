@@ -13,7 +13,7 @@
     border: 0 solid transparent;
     outline: none;
 
-    font-family: var(--typeface-font-family-sans-serif), SansSerif;
+    font-family: var(--typeface-font-family-sans-serif), sans-serif;
     font-size: 1rem;
     font-weight: 700;
     line-height: 1;
@@ -49,6 +49,14 @@
     width: 1.4rem;
     height: 1.4rem;
     flex-shrink: 0;
+
+    color: currentColor;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .label {
@@ -103,9 +111,9 @@
    SECONDARY
    ========================= */
 .secondary {
-    background: #ffffff;
-    color: var(--button-background-inverse);
-    border-color: var(--button-background-inverse);
+    color: var(--button-text-secondary);
+    border: 2px solid var(--button-border-color-default);
+    background: color-mix(in srgb, var(--button-background-inverse) 8%, white 92%);
 
     box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.8),
@@ -114,7 +122,7 @@
 
 .secondary:hover:not(:disabled) {
     transform: translateY(-1px);
-    background: color-mix(in srgb, var(--button-background-inverse) 8%, white 92%);
+    background: color-mix(in srgb, var(--button-background-hover) 8%, white 92%);
     box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.9),
             0 8px 18px rgba(0, 0, 0, 0.08);
