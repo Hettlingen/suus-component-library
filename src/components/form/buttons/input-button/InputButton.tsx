@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, CSSProperties, MouseEvent, ReactNode } from "react";
 import styles from "./InputButton.module.css";
 
-type ProductColorToken =
+export type ProductColorToken =
     | "--colors-juice-sugarcane"
     | "--colors-juice-tamarind"
     | "--colors-juice-guava"
