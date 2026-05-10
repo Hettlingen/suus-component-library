@@ -17,11 +17,9 @@
     "./styles.css": "./dist/suus-component-library.css"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "pack": "npm pack",
-    "publish": "npm version patch && npm publish",
+    "build-component-library": "tsc -b && vite build",
+    "pack-component-library-for-local-testing": "npm pack",
+    "publish-component-library": "npm version patch && npm publish",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
