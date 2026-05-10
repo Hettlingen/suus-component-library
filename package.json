@@ -48,6 +48,6 @@
     "vite-plugin-dts": "latest"
   },
   "dependencies": {
-    "suus-design-tokens": "^1.0.10"
+    "suus-design-tokens": "^1.0.13"
   }
 }

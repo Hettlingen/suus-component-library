@@ -1,6 +1,11 @@
 import type { ButtonHTMLAttributes, CSSProperties, MouseEvent, ReactNode } from "react";
-import styles from "./input-button.module.css";
+import styles from "./InputButton.module.css";
 
+type ProductColorToken =
+    | "--colors-juice-sugarcane"
+    | "--colors-juice-tamarind"
+    | "--colors-juice-guava"
+    | "--colors-juice-icetea";
 
 export type ButtonProps = {
     label: string;
@@ -8,9 +13,8 @@ export type ButtonProps = {
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
     loading?: boolean;
-    fullWidth?: boolean;
     variant?: "primary" | "secondary";
-    colorToken?: string;
+    colorToken?: ProductColorToken;
     icon?: ReactNode;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type" | "onClick" | "disabled">;
 
@@ -20,17 +24,15 @@ export default function InputButton({
                                         type = "button",
                                         disabled = false,
                                         loading = false,
-                                        fullWidth = false,
                                         variant = "primary",
-                                        colorToken,
+                                        colorToken = "--colors-juice-sugarcane",
                                         icon,
-                                        className = "",
                                         ...rest
                                     }: ButtonProps) {
     const isDisabled = disabled || loading;
 
     const styleButtonColor = {
-        "--btn-color": `var(${colorToken})`,
+        "--button-background-color": `var(${colorToken})`,
     } as CSSProperties;
 
     return (
@@ -42,9 +44,7 @@ export default function InputButton({
             className={[
                 styles.suusButton,
                 styles[variant],
-                fullWidth ? styles.full : "",
                 loading ? styles.loading : "",
-                className,
             ]
                 .filter(Boolean)
                 .join(" ")}

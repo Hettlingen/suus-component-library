@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import InputButton from "./input-button";
+import InputButton from "./InputButton";
 
 const meta = {
     title: "Components/InputButton",
@@ -13,9 +13,6 @@ const meta = {
             control: "select",
             options: ["primary", "secondary"]
         },
-        fullWidth: {
-            control: "boolean"
-        },
         disabled: {
             control: "boolean"
         },
@@ -25,10 +22,10 @@ const meta = {
         colorToken: {
             control: "select",
             options: [
-                "--colorProductSugarcane",
-                "--colorProductTamarind",
-                "--colorProductGuava",
-                "--colorProductIcetea"
+                "--colors-juice-sugarcane",
+                "--colors-juice-tamarind",
+                "--colors-juice-guava",
+                "--colors-juice-icetea"
             ]
         }
     }
@@ -42,7 +39,7 @@ export const Primary: Story = {
     args: {
         label: "In den Warenkorb",
         variant: "primary",
-        colorToken: "--colorProductSugarcane"
+        colorToken: "--colors-juice-sugarcane"
     }
 };
 
@@ -61,13 +58,10 @@ export const Disabled: Story = {
     }
 };
 
-export const FullWidth: Story = {
+export const Icon: Story = {
     args: {
-        label: "Weiter zur Zahlung",
+        label: "Nicht verfügbar",
         variant: "primary",
-        fullWidth: true
-    },
-    parameters: {
-        layout: "padded"
+        disabled: true
     }
 };

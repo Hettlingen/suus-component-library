@@ -13,6 +13,13 @@ dist-ssr
 *.local
 .npmrc
 
+# Generated files (TypeScript compilation & build output)
+src/**/*.d.ts
+src/**/*.d.ts.map
+src/**/*.js
+!src/**/*.tsx
+!src/**/*.ts
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -26,3 +33,4 @@ dist-ssr
 
 *storybook.log
 storybook-static
+tsconfig.tsbuildinfo

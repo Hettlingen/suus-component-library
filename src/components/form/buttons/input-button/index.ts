@@ -1,2 +1,2 @@
-export { default } from "./input-button";
-export type { ButtonProps } from "./input-button";
+export { default } from "./InputButton";
+export type { ButtonProps } from "./InputButton";

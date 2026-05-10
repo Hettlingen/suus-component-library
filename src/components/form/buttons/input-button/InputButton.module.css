@@ -1,11 +1,5 @@
 .suusButton {
-    --btn-color: var(--colors-juice-sugarcane);
-    --btn-text-color-primary: #ffffff;
-    --btn-text-color-secondary: #272727;
-    --btn-disabled-bg: #d9d9d9;
-    --btn-disabled-border: #c5c5c5;
-    --btn-disabled-text: #f7f7f7;
-    --btn-disabled-text-secondary: #bcbcbc;
+    --button-background-color: var(--colors-juice-sugarcane);
 
     display: inline-flex;
     align-items: center;
@@ -19,7 +13,7 @@
     border: 0 solid transparent;
     outline: none;
 
-    font-family: inherit;
+    font-family: var(--typeface-font-family-sans-serif), SansSerif;
     font-size: 1rem;
     font-weight: 700;
     line-height: 1;
@@ -47,12 +41,6 @@
     }
 }
 
-/* FULL WIDTH */
-.full {
-    width: 100%;
-    min-width: 0;
-}
-
 /* CONTENT */
 .icon {
     display: inline-flex;
@@ -71,19 +59,20 @@
    PRIMARY
    ========================= */
 .primary {
-    color: var(--btn-text-color-primary);
+    color: var(--button-text-primary);
     border-color: transparent;
 
     background:
             linear-gradient(
                     180deg,
-                    color-mix(in srgb, var(--btn-color) 85%, white 15%) 0%,
-                    var(--btn-color) 60%,
-                    color-mix(in srgb, var(--btn-color) 75%, black 25%) 100%
+                    color-mix(in srgb, var(--button-background-color) 85%, white 15%) 0%,
+                    var(--button-background-color) 60%,
+                    color-mix(in srgb, var(--button-background-color) 75%, black 25%) 100%
             );
+
     box-shadow:
-            inset 0 3px 6px color-mix(in srgb, var(--btn-color) 50%, white 50%),
-            inset 0 -2px 4px color-mix(in srgb, var(--btn-color) 60%, black 40%),
+            inset 0 3px 6px color-mix(in srgb, var(--button-background-color) 50%, white 50%),
+            inset 0 -2px 4px color-mix(in srgb, var(--button-background-color) 60%, black 40%),
             0 10px 18px rgba(0, 0, 0, 0.15);
 }
 
@@ -97,7 +86,7 @@
 
 .primary:focus-visible:not(:disabled) {
     box-shadow:
-            inset 0 0 0 3px color-mix(in srgb, var(--btn-color) 72%, white 28%),
+            inset 0 0 0 3px color-mix(in srgb, var(--button-background-color) 72%, white 28%),
             inset 0 2px 0 rgba(255, 255, 255, 0.18),
             inset 0 -2px 0 rgba(0, 0, 0, 0.12),
             0 0 0 4px rgba(255, 255, 255, 0.9);
@@ -115,8 +104,8 @@
    ========================= */
 .secondary {
     background: #ffffff;
-    color: var(--btn-color);
-    border-color: var(--btn-color);
+    color: var(--button-background-inverse);
+    border-color: var(--button-background-inverse);
 
     box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.8),
@@ -125,7 +114,7 @@
 
 .secondary:hover:not(:disabled) {
     transform: translateY(-1px);
-    background: color-mix(in srgb, var(--btn-color) 8%, white 92%);
+    background: color-mix(in srgb, var(--button-background-inverse) 8%, white 92%);
     box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.9),
             0 8px 18px rgba(0, 0, 0, 0.08);
@@ -133,13 +122,13 @@
 
 .secondary:focus-visible:not(:disabled) {
     box-shadow:
-            inset 0 0 0 2px color-mix(in srgb, var(--btn-color) 18%, white 82%),
+            inset 0 0 0 2px color-mix(in srgb, var(--button-background-inverse) 18%, white 82%),
             0 0 0 4px rgba(255, 255, 255, 0.95);
 }
 
 .secondary:active:not(:disabled) {
     transform: translateY(1px);
-    background: color-mix(in srgb, var(--btn-color) 12%, white 88%);
+    background: color-mix(in srgb, var(--button-background-inverse) 12%, white 88%);
     box-shadow:
             inset 0 2px 6px rgba(0, 0, 0, 0.08);
 }
@@ -153,16 +142,16 @@
 }
 
 .primary:disabled {
-    background: var(--btn-disabled-bg);
-    color: var(--btn-disabled-text);
+    background: var(--button-background-disabled);
+    color: var(--button-text-primary-disabled);
     border-color: transparent;
     box-shadow: none;
 }
 
 .secondary:disabled {
     background: #ffffff;
-    color: var(--btn-disabled-text-secondary);
-    border-color: var(--btn-disabled-border);
+    color: var(--button-text-secondary);
+    border-color: var(--button-border-color-disabled);
     box-shadow: none;
 }
 
@@ -183,8 +172,8 @@
 }
 
 .loaderSecondary {
-    border: 2px solid color-mix(in srgb, var(--btn-color) 20%, white 80%);
-    /*border-top-color: var(--btn-color);*/
+    border: 2px solid color-mix(in srgb, var(--button-background-color) 20%, white 80%);
+    border-top-color: var(--button-background-color);
 }
 
 @keyframes btn-spin {
