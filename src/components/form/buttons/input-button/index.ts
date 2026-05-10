@@ -1,2 +1,2 @@
 export { default } from "./InputButton";
-export type { ButtonProps } from "./InputButton";
+export type { ButtonProps, ProductColorToken } from "./InputButton";
