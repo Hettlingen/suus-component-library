@@ -1,7 +1,7 @@
-import type { ButtonHTMLAttributes, CSSProperties, MouseEvent, ReactNode } from "react";
-import styles from "./InputButton.module.css";
+import type {ButtonHTMLAttributes, CSSProperties, MouseEvent, ReactNode} from "react";
+import styles from "./Button.module.css";
 
-export type ProductColorToken =
+export type ColorToken =
     | "--colors-juice-sugarcane"
     | "--colors-juice-tamarind"
     | "--colors-juice-guava"
@@ -14,11 +14,14 @@ export type ButtonProps = {
     disabled?: boolean;
     loading?: boolean;
     variant?: "primary" | "secondary";
-    colorToken?: ProductColorToken;
+    colorToken?: ColorToken;
     icon?: ReactNode;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type" | "onClick" | "disabled">;
 
-export default function InputButton({
+/**
+ * A customizable button component that supports different variants, loading states, and color tokens.
+ */
+export default function Button({
                                         label,
                                         onClick,
                                         type = "button",

@@ -1,0 +1,24 @@
+.chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 40px;
+    padding: 0 18px;
+    border-radius: 999px;
+    border: 1px solid var(--chip-border-color, #d1d5db);
+    background: var(--chip-background-color, #ffffff);
+    color: var(--chip-text-color, #272727);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.chipGlassy {
+    border-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+    color: #f6ffef;
+    backdrop-filter: blur(10px);
+}

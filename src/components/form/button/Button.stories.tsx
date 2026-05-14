@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import InputButton from "./InputButton";
+import Button from "./Button";
 
 const meta = {
-    title: "Components/InputButton",
-    component: InputButton,
+    title: "Components/Button",
+    component: Button,
     parameters: {
         layout: "centered"
     },
@@ -29,7 +29,7 @@ const meta = {
             ]
         }
     }
-} satisfies Meta<typeof InputButton>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 

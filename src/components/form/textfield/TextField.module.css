@@ -1,0 +1,66 @@
+.inputBlockVertical {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.inputLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #272727;
+}
+
+.inputLabelGlassy {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.inputTextField {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #dfdfdf;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #272727;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inputTextField:focus {
+    border-color: #d9ab29;
+    box-shadow: 0 0 0 3px rgba(217, 171, 41, 0.18);
+}
+
+.inputTextFieldGlassy {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(14px);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inputTextFieldGlassy::placeholder {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.inputTextFieldGlassy:focus {
+    border-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+}
+
+.inputError {
+    border-color: #de6565;
+}
+
+.errorMessage {
+    font-size: 0.8rem;
+    color: #de6565;
+}

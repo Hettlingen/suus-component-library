@@ -3,5 +3,5 @@ import "./styles/index.css";
 
 
 // Export all components here
-export { default as InputButton } from "./components/form/buttons/input-button/InputButton";
-export type { ButtonProps, ProductColorToken } from "./components/form/buttons/input-button/InputButton";
+export { default as Button } from "./components/form/button/Button";
+export type { ButtonProps, ColorToken } from "./components/form/button/Button";

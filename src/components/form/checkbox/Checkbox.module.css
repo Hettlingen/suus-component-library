@@ -1,0 +1,99 @@
+.checkboxWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Versteckt das echte Input visuell, bleibt aber zugänglich */
+.checkboxInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Label enthält Checkbox + Text */
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+  user-select: none;
+  width: fit-content;
+}
+
+/* Glassy Variante */
+.checkboxLabelGlassy {
+  color: #ffffff;
+}
+
+/* Die visuelle Box */
+.customCheckbox {
+  width: 20px;
+  height: 20px;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition:
+          background-color 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Häkchen bei checked */
+.checkboxInput:checked + .checkboxLabel .customCheckbox::after {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Hintergrundfarbe bei checked */
+.checkboxInput:checked + .checkboxLabel .customCheckbox {
+  background-color: var(--colors-juice-sugarcane, #a7b325);
+  border-color: var(--colors-juice-sugarcane, #a7b325);
+}
+
+.checkboxLabel:hover .customCheckbox {
+  border-color: #999;
+}
+
+/* Tastatur-Fokus */
+.checkboxInput:focus-visible + .checkboxLabel .customCheckbox {
+  box-shadow: 0 0 0 3px rgba(167, 179, 37, 0.35);
+}
+
+/* Disabled */
+.checkboxInput:disabled + .checkboxLabel {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* Fehlerzustand */
+.checkboxInput[aria-invalid="true"] + .checkboxLabel .customCheckbox {
+  border-color: #de6565;
+}
+
+/* Label-Text */
+.checkboxText {
+  color: #333;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.checkboxLabelGlassy .checkboxText {
+  color: #ffffff;
+}
+
+.errorMessage {
+  font-size: 13px;
+  color: #de6565;
+}

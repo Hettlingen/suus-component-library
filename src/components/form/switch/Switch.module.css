@@ -1,0 +1,132 @@
+.switchWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.switchCheckbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switchLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switchLabelGlassy {
+  color: #ffffff;
+}
+
+.switchBackground {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  height: 32px;
+  background: var(--colorBrandLightGray, #eeeeee);
+  border-radius: 100px;
+  position: relative;
+  transition:
+          background-color 0.2s ease,
+          box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.switchButton {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+  transition:
+          left 0.2s ease,
+          transform 0.2s ease,
+          width 0.2s ease;
+}
+
+.switchCheckbox:checked + .switchLabel .switchBackground {
+  background: var(--colorBrandPrimaryLight, #a7b325);
+}
+
+.switchCheckbox:checked + .switchLabel .switchButton {
+  left: calc(100% - 3px);
+  transform: translateX(-100%);
+}
+
+.switchLabel:active .switchButton {
+  width: 30px;
+}
+
+.switchCheckbox:focus-visible + .switchLabel .switchBackground {
+  box-shadow: 0 0 0 3px rgba(167, 179, 37, 0.35);
+}
+
+.switchCheckbox:disabled + .switchLabel {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.switchCheckbox[aria-invalid="true"] + .switchLabel .switchBackground {
+  box-shadow: 0 0 0 2px #de6565;
+}
+
+.iconChecked,
+.iconUnchecked {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+}
+
+.iconChecked {
+  color: green;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.iconUnchecked {
+  color: var(--colors-juice-tamarind, #f8a702);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.switchCheckbox:checked + .switchLabel .iconChecked {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.switchCheckbox:checked + .switchLabel .iconUnchecked {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.switchText {
+  font-size: 15px;
+  line-height: 1.4;
+  color: #333333;
+}
+
+.switchLabelGlassy .switchText {
+  color: #ffffff;
+}
+
+.errorMessage {
+  font-size: 13px;
+  color: #de6565;
+}
