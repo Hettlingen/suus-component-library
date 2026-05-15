@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from "react";
+import type { ChangeEvent, InputHTMLAttributes } from "react";
 import styles from "./RadioButton.module.css";
 
 export type RadioButtonOption = {
@@ -13,31 +13,26 @@ export type RadioButtonProps = {
     options: RadioButtonOption[];
     error?: string;
     variant?: "glassy" | "default";
-} & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
-
+    value?: string;
+    defaultValue?: string;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "value" | "defaultValue" | "onChange">;
 
 /**
  * A custom radio button group component that supports a "glassy" variant and displays error messages.
  *
  * How to use it in your application:
  *
- * <RadioButton
- *   label="Lieferart"
- *   error={errors.deliveryType?.message}
- *   options={[
- *     {
- *       label: "Abholung",
- *       value: "pickup",
- *       description: "Du holst deine Bestellung selbst ab.",
- *     },
- *     {
- *       label: "Lieferung",
- *       value: "delivery",
- *       description: "Wir liefern deine Bestellung zu dir.",
- *     },
- *   ]}
- *   {...register("deliveryType")}
- * />
+ *  <RadioButton
+ *      label="Label"
+ *      name="optionsDefault"
+ *      defaultValue="option1"
+ *      options={[
+ *          { label: "Option 1", value: "option1" },
+ *          { label: "Option 2", value: "option2" },
+ *          { label: "Option 3", value: "option3" },
+ *      ]}
+ *  />
  */
 export default function RadioButton({
                                         label,
@@ -47,12 +42,18 @@ export default function RadioButton({
                                         variant = "default",
                                         className,
                                         disabled,
+                                        value,
+                                        defaultValue,
+                                        onChange,
                                         ...rest
                                     }: RadioButtonProps) {
+    const isControlled = value !== undefined;
+
     return (
         <fieldset
             className={[
-                styles.inputBlockVertical,
+                styles.radioGroup,
+                variant === "glassy" ? styles.radioGroupGlassy : "",
                 className ?? "",
             ]
                 .filter(Boolean)
@@ -63,8 +64,8 @@ export default function RadioButton({
             {label && (
                 <legend
                     className={[
-                        styles.inputLabel,
-                        variant === "glassy" ? styles.inputLabelGlassy : "",
+                        styles.radioLabel,
+                        variant === "glassy" ? styles.radioLabelGlassy : "",
                     ]
                         .filter(Boolean)
                         .join(" ")}
@@ -73,43 +74,61 @@ export default function RadioButton({
                 </legend>
             )}
 
-            <div className={styles.optionCardGroup}>
-                {options.map((option) => (
-                    <label key={option.value} className={styles.optionCardLabelWrapper}>
-                        <input
-                            type="radio"
-                            name={name}
-                            value={option.value}
-                            disabled={disabled}
-                            className={styles.srOnlyRadio}
-                            {...rest}
-                        />
+            <div className={styles.optionGroup}>
+                {options.map((option) => {
+                    const checkedProps = isControlled
+                        ? { checked: value === option.value }
+                        : { defaultChecked: defaultValue === option.value };
 
-                        <span
+                    return (
+                        <label
+                            key={option.value}
                             className={[
-                                styles.optionCard,
-                                variant === "glassy" ? styles.optionCardGlassy : "",
-                                error ? styles.optionCardError : "",
+                                styles.optionWrapper,
+                                disabled ? styles.optionWrapperDisabled : "",
                             ]
                                 .filter(Boolean)
                                 .join(" ")}
                         >
-              <span className={styles.optionCardTitle}>{option.label}</span>
+                            <input
+                                type="radio"
+                                name={name}
+                                value={option.value}
+                                disabled={disabled}
+                                className={styles.radioInput}
+                                onChange={onChange}
+                                {...checkedProps}
+                                {...rest}
+                            />
 
-                            {option.description && (
-                                <span className={styles.optionCardDescription}>
-                  {option.description}
-                </span>
-                            )}
-            </span>
-                    </label>
-                ))}
+                            <span
+                                className={[
+                                    styles.optionButton,
+                                    variant === "glassy" ? styles.optionButtonGlassy : "",
+                                    error ? styles.optionButtonError : "",
+                                ]
+                                    .filter(Boolean)
+                                    .join(" ")}
+                            >
+                                <span className={styles.optionTitle}>
+                                    {option.label}
+                                </span>
+
+                                {option.description && (
+                                    <span className={styles.optionDescription}>
+                                        {option.description}
+                                    </span>
+                                )}
+                            </span>
+                        </label>
+                    );
+                })}
             </div>
 
             {error && (
                 <span id={`${name}-error`} className={styles.errorMessage}>
-          {error}
-        </span>
+                    {error}
+                </span>
             )}
         </fieldset>
     );
