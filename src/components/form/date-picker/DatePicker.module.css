@@ -32,6 +32,25 @@
     appearance: none;
 }
 
+.inputDateField::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    display: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.inputDateField::-webkit-inner-spin-button,
+.inputDateField::-webkit-clear-button {
+    display: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.inputDateField {
+    appearance: none;
+    -webkit-appearance: none;
+}
+
 .inputDateFieldGlassy {
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: var(--form-background-glassy, rgba(255, 255, 255, 0.16));
@@ -54,7 +73,7 @@
     border-color: #de6565;
 }
 
-.calendarIcon {
+.calendarIconButton {
     position: absolute;
     right: 14px;
     top: 50%;
@@ -63,9 +82,23 @@
     justify-content: center;
     width: 24px;
     height: 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
     color: var(--colors-juice-sugarcane, #6a7a0a);
-    pointer-events: none;
+    cursor: pointer;
     transform: translateY(-50%);
+}
+
+.calendarIconButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.calendarIconButton:focus-visible {
+    outline: 2px solid var(--colors-juice-sugarcane, #a7b325);
+    outline-offset: 3px;
+    border-radius: 999px;
 }
 
 .icon {

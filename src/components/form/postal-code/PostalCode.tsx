@@ -35,7 +35,7 @@ export type PostalCodeProps = {
  * Ein React-Komponente für die Eingabe von Schweizer Postleitzahlen mit Autovervollständigung.
  *
  * Diese Komponente ermöglicht es Benutzern, eine Schweizer Postleitzahl oder einen Ortsnamen einzugeben.
- * Während der Eingabe werden passende Vorschläge aus der OpenPLZAPI angezeigt.
+ * Während der Eingabe werden passende Vorschläge aus der OpenPLZAPI (https://www.openplzapi.org/de/) angezeigt.
  * Es gibt auch Validierungsfeedback, ob die eingegebene Postleitzahl gültig ist oder nicht.
  *
  * How to use it in your application:

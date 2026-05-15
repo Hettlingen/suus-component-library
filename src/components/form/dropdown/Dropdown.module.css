@@ -25,9 +25,9 @@
 }
 
 .inputSelectFieldGlassy {
-    border-radius: var(--form-input-border-radius);
+    border-radius: var(--form-radius-default);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background: var(--form-input-background-glassy);
+    background: var(--form-background-glassy);
     backdrop-filter: blur(10px);
     color: white;
 }

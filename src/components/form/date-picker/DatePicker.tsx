@@ -1,4 +1,9 @@
-import type { InputHTMLAttributes, Ref } from "react";
+import {
+    useRef,
+    type ChangeEvent,
+    type InputHTMLAttributes,
+    type Ref,
+} from "react";
 import styles from "./DatePicker.module.css";
 
 export type DatePickerProps = {
@@ -15,7 +20,6 @@ export type DatePickerProps = {
     InputHTMLAttributes<HTMLInputElement>,
     "type" | "value" | "onChange" | "max" | "min"
 >;
-
 
 /**
  * A reusable DatePicker component that can be used across the application.
@@ -66,10 +70,21 @@ export default function DatePicker({
                                        ...rest
                                    }: DatePickerProps) {
     const inputId = id ?? name;
+    const inputRef = useRef<HTMLInputElement | null>(null);
 
     const effectiveMaxDate = maxDate ?? new Date();
 
-    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    function setInputElement(element: HTMLInputElement | null) {
+        inputRef.current = element;
+
+        if (typeof ref === "function") {
+            ref(element);
+        } else if (ref) {
+            ref.current = element;
+        }
+    }
+
+    function handleChange(event: ChangeEvent<HTMLInputElement>) {
         const nextValue = event.target.value;
 
         if (!nextValue) {
@@ -78,6 +93,13 @@ export default function DatePicker({
         }
 
         onDateChange?.(parseDateInputValue(nextValue));
+    }
+
+    function handleOpenPicker() {
+        if (disabled) return;
+
+        inputRef.current?.showPicker?.();
+        inputRef.current?.focus();
     }
 
     return (
@@ -98,7 +120,7 @@ export default function DatePicker({
                 <input
                     id={inputId}
                     name={name}
-                    ref={ref}
+                    ref={setInputElement}
                     type="date"
                     value={formatDateForInput(value)}
                     max={formatDateForInput(effectiveMaxDate)}
@@ -119,15 +141,22 @@ export default function DatePicker({
                     {...rest}
                 />
 
-                <span className={styles.calendarIcon} aria-hidden="true">
-          <CalendarIcon />
-        </span>
+                <button
+                    type="button"
+                    className={styles.calendarIconButton}
+                    onClick={handleOpenPicker}
+                    disabled={disabled}
+                    aria-label="Datum auswählen"
+                    tabIndex={-1}
+                >
+                    <CalendarIcon />
+                </button>
             </div>
 
             {error && (
                 <span id={`${name}-error`} className={styles.errorMessage}>
-          {error}
-        </span>
+                    {error}
+                </span>
             )}
         </div>
     );
