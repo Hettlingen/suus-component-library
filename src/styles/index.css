@@ -1,3 +1,19 @@
 @import "suus-design-tokens/tokens.css";
 
 /* Hier können zusätzliche globale Styles für die Component Library hinzugefügt werden */
+
+:root {
+    font-family: var(--typeface-font-family-body), sans-serif;
+}
+
+html,
+body {
+    font-family: var(--typeface-font-family-sans-serif), sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
