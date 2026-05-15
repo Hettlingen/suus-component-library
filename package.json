@@ -21,7 +21,7 @@
     "publish-component-library": "npm version patch && npm publish",
     "build-component-library-for-local-testing": "npm pack",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build --output-dir storybook-static"
   },
   "peerDependencies": {
     "react": "^18.3.0 || ^19.0.0",
