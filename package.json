@@ -18,8 +18,8 @@
   },
   "scripts": {
     "build-component-library": "tsc -b && vite build",
-    "pack-component-library-for-local-testing": "npm pack",
     "publish-component-library": "npm version patch && npm publish",
+    "build-component-library-for-local-testing": "npm pack",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
