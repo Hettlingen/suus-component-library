@@ -4,7 +4,13 @@ const config: StorybookConfig = {
   "stories": [
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
-  "addons": [],
-  "framework": "@storybook/react-vite"
+  "addons": [
+    '@storybook/addon-docs'
+  ],
+  "framework": "@storybook/react-vite",
+  viteFinal: async (config) => {
+    config.base = '/suus-component-library/';
+    return config;
+  },
 };
 export default config;
