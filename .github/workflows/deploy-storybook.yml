@@ -34,9 +34,15 @@ jobs:
         run: npm ci
 
       - name: Build Storybook
-        env:
-          STORYBOOK_BASE: /suus-component-library/
         run: npm run build-storybook:github
+
+      - name: Verify Storybook output
+        run: |
+          echo "Storybook output:"
+          ls -la storybook-static
+          echo "Check index.html:"
+          grep -n "src/main.tsx" storybook-static/index.html || true
+          grep -n "suus-component-library" storybook-static/index.html || true
 
       - name: Upload Storybook artifact
         uses: actions/upload-pages-artifact@v4
