@@ -9,7 +9,7 @@ const config: StorybookConfig = {
   ],
   "framework": "@storybook/react-vite",
   viteFinal: async (config) => {
-    config.base = '/suus-component-library/';
+    config.base = process.env.STORYBOOK_BASE ?? '/';
     return config;
   },
 };

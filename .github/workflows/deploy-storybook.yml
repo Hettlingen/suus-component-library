@@ -34,7 +34,9 @@ jobs:
         run: npm ci
 
       - name: Build Storybook
-        run: npm run build-storybook
+        env:
+          STORYBOOK_BASE: /suus-component-library/
+        run: npm run build-storybook:github
 
       - name: Upload Storybook artifact
         uses: actions/upload-pages-artifact@v4
