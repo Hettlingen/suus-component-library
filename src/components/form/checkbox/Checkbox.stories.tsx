@@ -7,43 +7,11 @@ const meta = {
     parameters: {
         layout: "centered",
     },
-    tags: ["autodocs"],
     argTypes: {
-        label: {
-            control: "text",
-        },
-        name: {
-            control: "text",
-        },
         variant: {
             control: "select",
             options: ["default", "glassy"],
         },
-        checked: {
-            control: "boolean",
-        },
-        defaultChecked: {
-            control: "boolean",
-        },
-        disabled: {
-            control: "boolean",
-        },
-        required: {
-            control: "boolean",
-        },
-        error: {
-            control: "text",
-        },
-        onChange: {
-            action: "changed",
-        },
-    },
-    args: {
-        label: "Ich akzeptiere die AGB",
-        name: "terms",
-        variant: "default",
-        disabled: false,
-        required: false,
     },
 } satisfies Meta<typeof Checkbox>;
 
@@ -53,106 +21,71 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
-        label: "Ich akzeptiere die AGB",
-        name: "termsDefault",
-        variant: "default",
+        name: "default",
+        label: "Label",
     },
 };
 
 export const Checked: Story = {
     args: {
-        label: "Newsletter abonnieren",
-        name: "newsletterChecked",
-        variant: "default",
+        name: "checked",
+        label: "Label",
         defaultChecked: true,
     },
 };
 
 export const Disabled: Story = {
     args: {
-        label: "Diese Option ist nicht verfügbar",
-        name: "optionDisabled",
-        variant: "default",
+        name: "disabled",
+        label: "Label",
         disabled: true,
     },
 };
 
 export const DisabledChecked: Story = {
     args: {
-        label: "Bereits ausgewählt, aber deaktiviert",
-        name: "optionDisabledChecked",
-        variant: "default",
+        name: "disabled-checked",
+        label: "Label",
         disabled: true,
         defaultChecked: true,
-    },
-};
-
-export const Required: Story = {
-    args: {
-        label: "Ich akzeptiere die Datenschutzbestimmungen",
-        name: "privacyRequired",
-        variant: "default",
-        required: true,
     },
 };
 
 export const Error: Story = {
     args: {
-        label: "Ich akzeptiere die AGB",
-        name: "termsError",
-        variant: "default",
-        error: "Du musst die AGB akzeptieren, bevor es weitergeht.",
+        name: "error",
+        label: "Label",
+        error: "Bitte auswählen.",
+    },
+};
+
+export const ErrorChecked: Story = {
+    args: {
+        name: "error-checked",
+        label: "Label",
+        error: "Bitte auswählen.",
+        defaultChecked: true,
     },
 };
 
 export const Glassy: Story = {
     args: {
-        label: "Ich akzeptiere die AGB",
-        name: "termsGlassy",
+        name: "glassy",
+        label: "Label",
         variant: "glassy",
     },
-    globals: {
-        backgrounds: {
-            value: "dark",
-        },
-    },
-};
-
-export const GlassyChecked: Story = {
-    args: {
-        label: "Newsletter abonnieren",
-        name: "newsletterGlassyChecked",
-        variant: "glassy",
-        defaultChecked: true,
-    },
-    globals: {
-        backgrounds: {
-            value: "dark",
-        },
-    },
-};
-
-export const GlassyDisabled: Story = {
-    args: {
-        label: "Diese Option ist nicht verfügbar",
-        name: "optionGlassyDisabled",
-        variant: "glassy",
-        disabled: true,
-    },
-    globals: {
-        backgrounds: {
-            value: "dark",
-        },
-    },
-};
-
-export const GlassyError: Story = {
-    args: {
-        label: "Ich akzeptiere die AGB",
-        name: "termsGlassyError",
-        variant: "glassy",
-        error: "Ohne Zustimmung bleibt der Warenkorb leider im Parkmodus.",
-    },
+    decorators: [
+        (Story) => (
+            <div
+                style={{
+                    background: "var(--colors-juice-sugarcane, #b5cc35)",
+                    padding: "2rem",
+                }}
+            >
+                <Story />
+            </div>
+        ),
+    ],
     globals: {
         backgrounds: {
             value: "dark",

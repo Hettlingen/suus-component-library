@@ -1,24 +1,13 @@
-import type { InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes, ReactNode } from "react";
 import styles from "./Checkbox.module.css";
 
 export type CheckboxProps = {
-    label: string;
+    label: ReactNode;
     name: string;
     error?: string;
-    variant?: "glassy" | "default";
+    variant?: "default" | "glassy";
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 
-/**
- * A custom-styled checkbox component that supports error display and accessibility features.
- *
- * How to use it in your application:
- *
- * <Checkbox
- *   label="Ich akzeptiere die AGB"
- *   error={errors.acceptTerms?.message}
- *   {...register("acceptTerms")}
- * />
- */
 export default function Checkbox({
                                      label,
                                      name,
@@ -35,6 +24,9 @@ export default function Checkbox({
         <div
             className={[
                 styles.checkboxWrapper,
+                variant === "glassy" ? styles.checkboxWrapperGlassy : "",
+                error ? styles.checkboxWrapperError : "",
+                disabled ? styles.checkboxWrapperDisabled : "",
                 className ?? "",
             ]
                 .filter(Boolean)
@@ -51,16 +43,18 @@ export default function Checkbox({
                 {...rest}
             />
 
-            <label
-                htmlFor={checkboxId}
-                className={[
-                    styles.checkboxLabel,
-                    variant === "glassy" ? styles.checkboxLabelGlassy : "",
-                ]
-                    .filter(Boolean)
-                    .join(" ")}
-            >
-                <span className={styles.customCheckbox} aria-hidden="true" />
+            <label htmlFor={checkboxId} className={styles.checkboxLabel}>
+        <span className={styles.customCheckbox} aria-hidden="true">
+          <svg
+              className={styles.checkIcon}
+              viewBox="0 0 24 24"
+              focusable="false"
+              aria-hidden="true"
+          >
+            <path d="M20 6L9 17L4 12" />
+          </svg>
+        </span>
+
                 <span className={styles.checkboxText}>{label}</span>
             </label>
 

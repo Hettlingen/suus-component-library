@@ -1,10 +1,17 @@
 .checkboxWrapper {
+  --checkbox-color: var(--colors-juice-sugarcane, #899822);
+  --checkbox-error-color: var(--colors-status-error, #de6565);
+  --checkbox-disabled-color: var(--form-background-disabled, #dfdfdf);
+  --checkbox-text-color: var(--form-background-disabled, #5b5a5a);
+  --checkbox-focus-color: rgba(137, 152, 34, 0.28);
+
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.45rem;
+  width: fit-content;
 }
 
-/* Versteckt das echte Input visuell, bleibt aber zugänglich */
+/* Native Input verstecken, aber für Screenreader und Keyboard erreichbar lassen */
 .checkboxInput {
   position: absolute;
   width: 1px;
@@ -13,87 +20,176 @@
   pointer-events: none;
 }
 
-/* Label enthält Checkbox + Text */
+/* Label: Checkbox + Text */
 .checkboxLabel {
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
-  gap: 0.5rem;
-  user-select: none;
+  gap: 0.75rem;
   width: fit-content;
+  cursor: pointer;
+  user-select: none;
 }
 
-/* Glassy Variante */
-.checkboxLabelGlassy {
-  color: #ffffff;
-}
-
-/* Die visuelle Box */
+/* Sichtbare Checkbox */
 .customCheckbox {
-  width: 20px;
-  height: 20px;
-  background-color: #f0f0f0;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  transition:
-          background-color 0.2s ease,
-          border-color 0.2s ease,
-          box-shadow 0.2s ease,
-          transform 0.2s ease;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+
+  border: 2.5px solid var(--checkbox-color);
+  border-radius: 0.45rem;
+  background-color: transparent;
+
   box-sizing: border-box;
-  flex-shrink: 0;
+
+  transition:
+          background-color 160ms ease,
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          transform 160ms ease;
 }
 
-/* Häkchen bei checked */
-.checkboxInput:checked + .checkboxLabel .customCheckbox::after {
-  content: "✔";
-  color: white;
-  font-size: 14px;
-  line-height: 1;
+/* Check Icon */
+.checkIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+          opacity 140ms ease,
+          transform 160ms ease;
 }
 
-/* Hintergrundfarbe bei checked */
-.checkboxInput:checked + .checkboxLabel .customCheckbox {
-  background-color: var(--colors-juice-sugarcane, #a7b325);
-  border-color: var(--colors-juice-sugarcane, #a7b325);
+.checkIcon path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
+/* Text */
+.checkboxText {
+  color: var(--form-text-label);
+  font-size: var(--typeface-font-size-default-20, 1.1rem);
+  font-weight: var(--typeface-font-weight-bold-700, 700);
+  line-height: 1.2;
+}
+
+/* Hover */
 .checkboxLabel:hover .customCheckbox {
-  border-color: #999;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 4px var(--checkbox-focus-color);
 }
 
-/* Tastatur-Fokus */
+/* Checked */
+.checkboxInput:checked + .checkboxLabel .customCheckbox {
+  background-color: var(--checkbox-color);
+  border-color: var(--checkbox-color);
+}
+
+.checkboxInput:checked + .checkboxLabel .checkIcon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Keyboard Focus */
 .checkboxInput:focus-visible + .checkboxLabel .customCheckbox {
-  box-shadow: 0 0 0 3px rgba(167, 179, 37, 0.35);
+  outline: none;
+  box-shadow: 0 0 0 4px var(--checkbox-focus-color);
 }
 
 /* Disabled */
+.checkboxWrapperDisabled {
+  --checkbox-color: var(--checkbox-disabled-color);
+  --checkbox-text-color: var(--form-background-disabled, #5b5a5a);
+}
+
 .checkboxInput:disabled + .checkboxLabel {
   cursor: not-allowed;
-  opacity: 0.55;
 }
 
-/* Fehlerzustand */
-.checkboxInput[aria-invalid="true"] + .checkboxLabel .customCheckbox {
-  border-color: #de6565;
+.checkboxInput:disabled + .checkboxLabel .customCheckbox {
+  border-color: var(--checkbox-disabled-color);
+  background-color: transparent;
+  box-shadow: none;
+  transform: none;
 }
 
-/* Label-Text */
-.checkboxText {
-  color: #333;
-  font-size: 15px;
-  line-height: 1.4;
+.checkboxInput:disabled:checked + .checkboxLabel .customCheckbox {
+  background-color: var(--checkbox-disabled-color);
+  border-color: var(--checkbox-disabled-color);
 }
 
-.checkboxLabelGlassy .checkboxText {
-  color: #ffffff;
+.checkboxInput:disabled + .checkboxLabel .checkboxText {
+  opacity: 0.75;
+}
+
+/* Error */
+.checkboxWrapperError {
+  --checkbox-color: var(--checkbox-error-color);
+  --checkbox-focus-color: rgba(222, 101, 101, 0.24);
+}
+
+.checkboxWrapperError .customCheckbox {
+  border-color: var(--checkbox-error-color);
+}
+
+.checkboxWrapperError .checkboxInput:checked + .checkboxLabel .customCheckbox {
+  background-color: var(--checkbox-error-color);
+  border-color: var(--checkbox-error-color);
 }
 
 .errorMessage {
-  font-size: 13px;
-  color: #de6565;
+  color: var(--checkbox-error-color);
+  font-family: var(--typeface-font-family-form, inherit);
+  font-size: var(--typeface-font-size-small-16, 0.9rem);
+  font-weight: var(--typeface-font-weight-regular-500, 500);
+  line-height: 1.35;
+  padding-left: 2.75rem;
+}
+
+/* Glassy / auf grünem Hintergrund */
+.checkboxWrapperGlassy {
+  --checkbox-color: rgba(255, 255, 255, 0.72);
+  --checkbox-text-color: #ffffff;
+  --checkbox-focus-color: rgba(255, 255, 255, 0.24);
+}
+
+.checkboxWrapperGlassy .customCheckbox {
+  border-color: rgba(255, 255, 255, 0.72);
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+.checkboxWrapperGlassy .checkboxInput:checked + .checkboxLabel .customCheckbox {
+  background-color: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.checkboxWrapperGlassy .checkboxText {
+  color: #ffffff;
+}
+
+/* Glassy + Error */
+.checkboxWrapperGlassy.checkboxWrapperError {
+  --checkbox-color: var(--checkbox-error-color);
+  --checkbox-text-color: #ffffff;
+  --checkbox-focus-color: rgba(222, 101, 101, 0.28);
+}
+
+.checkboxWrapperGlassy.checkboxWrapperError .customCheckbox {
+  border-color: var(--checkbox-error-color);
+  background-color: transparent;
+}
+
+.checkboxWrapperGlassy.checkboxWrapperError
+.checkboxInput:checked
++ .checkboxLabel
+.customCheckbox {
+  background-color: var(--checkbox-error-color);
+  border-color: var(--checkbox-error-color);
 }
