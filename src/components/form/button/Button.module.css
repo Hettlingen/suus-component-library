@@ -1,5 +1,5 @@
 .suusButton {
-    --button-background-color: var(--colors-juice-sugarcane);
+    --button-background-color: var(--color-juice-sugarcane);
 
     display: inline-flex;
     align-items: center;
@@ -67,7 +67,7 @@
    PRIMARY
    ========================= */
 .primary {
-    color: var(--button-text-primary);
+    color: var(--button-primary-text-default);
     border-color: transparent;
 
     background:
@@ -111,9 +111,9 @@
    SECONDARY
    ========================= */
 .secondary {
-    color: var(--button-text-secondary);
-    border: 2px solid var(--button-border-color-default);
-    background: color-mix(in srgb, var(--button-background-inverse) 8%, white 92%);
+    color: var(--button-secondary-text-default);
+    border: 2px solid var(--button-secondary-border-color-default);
+    background: color-mix(in srgb, var(--button-secondary-background-enabled) 8%, white 92%);
 
     box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.8),
@@ -122,7 +122,7 @@
 
 .secondary:hover:not(:disabled) {
     transform: translateY(-1px);
-    background: color-mix(in srgb, var(--button-background-hover) 8%, white 92%);
+    background: color-mix(in srgb, var(--button-secondary-background-hover) 8%, white 92%);
     box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.9),
             0 8px 18px rgba(0, 0, 0, 0.08);
@@ -130,13 +130,13 @@
 
 .secondary:focus-visible:not(:disabled) {
     box-shadow:
-            inset 0 0 0 2px color-mix(in srgb, var(--button-background-inverse) 18%, white 82%),
+            inset 0 0 0 2px color-mix(in srgb, var(--button-secondary-background-hover) 18%, white 82%),
             0 0 0 4px rgba(255, 255, 255, 0.95);
 }
 
 .secondary:active:not(:disabled) {
     transform: translateY(1px);
-    background: color-mix(in srgb, var(--button-background-inverse) 12%, white 88%);
+    background: color-mix(in srgb, var(--button-secondary-background-enabled) 12%, white 88%);
     box-shadow:
             inset 0 2px 6px rgba(0, 0, 0, 0.08);
 }
@@ -150,16 +150,16 @@
 }
 
 .primary:disabled {
-    background: var(--button-background-disabled);
-    color: var(--button-text-primary-disabled);
+    background: var(--button-primary-background-disabled);
+    color: var(--button-primary-text-disabled);
     border-color: transparent;
     box-shadow: none;
 }
 
 .secondary:disabled {
     background: #ffffff;
-    color: var(--button-text-secondary);
-    border-color: var(--button-border-color-disabled);
+    color: var(--button-secondary-text-disabled);
+    border-color: var(--button-secondary-border-color-disabled);
     box-shadow: none;
 }
 

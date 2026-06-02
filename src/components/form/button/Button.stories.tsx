@@ -5,7 +5,14 @@ const meta = {
     title: "Components/Button",
     component: Button,
     parameters: {
-        layout: "centered"
+        layout: "centered",
+        docs: {
+            description: {
+                component: `
+Der Button verwendet ausschliesslich semantic Design Tokens.
+        `,
+            },
+        },
     },
     tags: ["autodocs"],
     argTypes: {
@@ -22,10 +29,10 @@ const meta = {
         colorToken: {
             control: "select",
             options: [
-                "--colors-juice-sugarcane",
-                "--colors-juice-tamarind",
-                "--colors-juice-guava",
-                "--colors-juice-icetea"
+                "--color-juice-sugarcane",
+                "--color-juice-tamarind",
+                "--color-juice-guava",
+                "--color-juice-icetea"
             ]
         }
     }
@@ -39,7 +46,7 @@ export const Primary: Story = {
     args: {
         label: "In den Warenkorb",
         variant: "primary",
-        colorToken: "--colors-juice-sugarcane"
+        colorToken: "--color-juice-sugarcane"
     }
 };
 
@@ -70,7 +77,7 @@ export const Icon: Story = {
         label: "Nicht verfügbar",
         variant: "primary",
         disabled: false,
-        colorToken: "--colors-juice-tamarind",
+        colorToken: "--color-juice-tamarind",
         icon: (
             <svg
                 viewBox="0 0 24 24"

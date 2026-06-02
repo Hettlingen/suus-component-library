@@ -21,5 +21,13 @@
     "rootDir": "./src"
   },
   "include": ["src"],
-  "references": []
+  "references": [],
+  "exclude": [
+    "**/*.stories.ts",
+    "**/*.stories.tsx",
+    "**/*.docs.mdx",
+    "**/*.mdx",
+    "storybook-static",
+    ".storybook"
+  ]
 }

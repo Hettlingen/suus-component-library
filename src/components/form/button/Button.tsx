@@ -2,10 +2,10 @@ import type {ButtonHTMLAttributes, CSSProperties, MouseEvent, ReactNode} from "r
 import styles from "./Button.module.css";
 
 export type ColorToken =
-    | "--colors-juice-sugarcane"
-    | "--colors-juice-tamarind"
-    | "--colors-juice-guava"
-    | "--colors-juice-icetea";
+    | "--color-juice-sugarcane"
+    | "--color-juice-tamarind"
+    | "--color-juice-guava"
+    | "--color-juice-icetea";
 
 export type ButtonProps = {
     label: string;
@@ -28,7 +28,7 @@ export default function Button({
                                         disabled = false,
                                         loading = false,
                                         variant = "primary",
-                                        colorToken = "--colors-juice-sugarcane",
+                                        colorToken = "--color-juice-sugarcane",
                                         icon,
                                         ...rest
                                     }: ButtonProps) {

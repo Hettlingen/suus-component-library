@@ -104,7 +104,9 @@ export default function RadioButton({
                             <span
                                 className={[
                                     styles.optionButton,
-                                    variant === "glassy" ? styles.optionButtonGlassy : "",
+                                    variant === "glassy"
+                                        ? styles.optionButtonGlassy
+                                        : styles.optionButtonDefault,
                                     error ? styles.optionButtonError : "",
                                 ]
                                     .filter(Boolean)

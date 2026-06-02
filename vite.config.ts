@@ -12,6 +12,14 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
+      exclude: [
+        "**/*.stories.ts",
+        "**/*.stories.tsx",
+        "**/*.docs.mdx",
+        "**/*.mdx",
+        ".storybook",
+        "storybook-static",
+      ],
     }),
   ],
   build: {

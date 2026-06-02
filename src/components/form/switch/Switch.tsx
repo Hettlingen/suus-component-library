@@ -8,25 +8,8 @@ export type SwitchProps = {
     variant?: "glassy" | "default";
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 
-
 /**
  * A reusable Switch component that can be used across the application.
- *
- * How to use it in your application with react-hook-form:
- *
- *  <Switch
- *    label="Newsletter abonnieren"
- *    error={errors.newsletter?.message}
- *    {...register("newsletter")}
- *  />
- *
- * How to use it in your application without react-hook-form:
- *  <Switch
- *    name="isActive"
- *    label="Aktiv"
- *    checked={isActive}
- *    onChange={(event) => setIsActive(event.target.checked)}
- *  />
  */
 export default function Switch({
                                    name,
@@ -64,30 +47,41 @@ export default function Switch({
                 htmlFor={switchId}
                 className={[
                     styles.switchLabel,
-                    variant === "glassy" ? styles.switchLabelGlassy : "",
+                    variant === "glassy"
+                        ? styles.switchLabelGlassy
+                        : styles.switchLabelDefault,
                 ]
                     .filter(Boolean)
                     .join(" ")}
             >
-        <span className={styles.switchBackground}>
-          <span className={styles.switchButton} aria-hidden="true">
-            <span className={styles.iconChecked}>
-              <CheckIcon />
-            </span>
+                <span
+                    className={[
+                        styles.switchBackground,
+                        variant === "glassy"
+                            ? styles.switchBackgroundGlassy
+                            : styles.switchBackgroundDefault,
+                    ]
+                        .filter(Boolean)
+                        .join(" ")}
+                >
+                    <span className={styles.switchButton} aria-hidden="true">
+                        <span className={styles.iconChecked}>
+                            <CheckIcon />
+                        </span>
 
-            <span className={styles.iconUnchecked}>
-              <CloseIcon />
-            </span>
-          </span>
-        </span>
+                        <span className={styles.iconUnchecked}>
+                            <CloseIcon />
+                        </span>
+                    </span>
+                </span>
 
                 {label && <span className={styles.switchText}>{label}</span>}
             </label>
 
             {error && (
                 <span id={`${name}-error`} className={styles.errorMessage}>
-          {error}
-        </span>
+                    {error}
+                </span>
             )}
         </div>
     );

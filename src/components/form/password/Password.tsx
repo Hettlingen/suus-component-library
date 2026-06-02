@@ -1,18 +1,11 @@
-import { useState, type InputHTMLAttributes, type Ref, type CSSProperties } from "react";
+import {type InputHTMLAttributes, type Ref, useState} from "react";
 import styles from "./Password.module.css";
-
-export type ProductColorToken =
-    | "--colors-juice-sugarcane"
-    | "--colors-juice-tamarind"
-    | "--colors-juice-guava"
-    | "--colors-juice-icetea";
 
 export type PasswordProps = {
     label?: string;
     name: string;
     error?: string;
     variant?: "glassy" | "default";
-    colorToken?: ProductColorToken;
     ref?: Ref<HTMLInputElement>;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 
@@ -34,7 +27,6 @@ export default function Password({
                                      id,
                                      error,
                                      variant = "default",
-                                     colorToken = "--colors-juice-sugarcane",
                                      className,
                                      disabled,
                                      ref,
@@ -45,16 +37,12 @@ export default function Password({
 
     const inputId = id ?? name;
 
-    const passwordStyle = {
-        "--password-accent-color": `var(${colorToken})`,
-    } as CSSProperties;
-
     function togglePasswordVisibility() {
         setShowPassword((prev) => !prev);
     }
 
     return (
-        <div className={styles.inputBlockVertical} style={passwordStyle}>
+        <div className={styles.inputBlockVertical}>
             {label && (
                 <label
                     htmlFor={inputId}

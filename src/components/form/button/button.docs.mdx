@@ -1,0 +1,38 @@
+
+import { Meta, Canvas, Controls, Source } from "@storybook/addon-docs/blocks";
+import * as ButtonStories from "./Button.stories";
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Die `Button` Komponente wird für klickbare Aktionen verwendet, zum Beispiel für Warenkorb-Aktionen, Formular-Aktionen oder weiterführende Aktionen innerhalb eines UI-Flows.
+
+Die Komponente unterstützt zwei Varianten, einen Ladezustand, einen deaktivierten Zustand sowie produktbezogene Farb-Tokens über die Prop `colorToken`.
+
+---
+
+## Verwendung
+
+Buttons sollten eine klare Aktion beschreiben.
+
+Gute Labels:
+
+- `In den Warenkorb`
+- `Mehr erfahren`
+- `Speichern`
+- `Zur Kasse`
+
+Weniger gute Labels:
+
+- `OK`
+- `Klick hier`
+- `Weiter`, wenn nicht klar ist, wohin
+
+---
+
+## Import
+
+```tsx
+import Button from "./Button";
+```

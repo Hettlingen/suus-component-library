@@ -22,15 +22,6 @@ const meta = {
             control: "select",
             options: ["default", "glassy"],
         },
-        colorToken: {
-            control: "select",
-            options: [
-                "--colors-juice-sugarcane",
-                "--colors-juice-tamarind",
-                "--colors-juice-guava",
-                "--colors-juice-icetea",
-            ],
-        },
         disabled: {
             control: "boolean",
         },
@@ -57,7 +48,6 @@ const meta = {
         name: "password",
         placeholder: "Dein Passwort",
         variant: "default",
-        colorToken: "--colors-juice-sugarcane",
         disabled: false,
         required: false,
         autoComplete: "current-password",
@@ -191,45 +181,5 @@ export const GlassyDisabled: Story = {
         backgrounds: {
             value: "dark",
         },
-    },
-};
-
-export const SugarcaneAccent: Story = {
-    args: {
-        label: "Passwort",
-        name: "passwordSugarcane",
-        placeholder: "Sugarcane Passwort",
-        colorToken: "--colors-juice-sugarcane",
-        variant: "default",
-    },
-};
-
-export const TamarindAccent: Story = {
-    args: {
-        label: "Passwort",
-        name: "passwordTamarind",
-        placeholder: "Tamarind Passwort",
-        colorToken: "--colors-juice-tamarind",
-        variant: "default",
-    },
-};
-
-export const GuavaAccent: Story = {
-    args: {
-        label: "Passwort",
-        name: "passwordGuava",
-        placeholder: "Guava Passwort",
-        colorToken: "--colors-juice-guava",
-        variant: "default",
-    },
-};
-
-export const IceTeaAccent: Story = {
-    args: {
-        label: "Passwort",
-        name: "passwordIceTea",
-        placeholder: "Ice Tea Passwort",
-        colorToken: "--colors-juice-icetea",
-        variant: "default",
     },
 };
