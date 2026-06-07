@@ -1,0 +1,127 @@
+name: Build and publish component library
+
+permissions:
+  contents: write
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'package.json'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'package.json'
+  # Add manual trigger for debugging / manual publish
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    name: Build tokens and commit generated files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build component library
+        # uses the script from your package.json: "build-component-library"
+        run: npm run build-component-library
+
+      - name: "Debug: list dist"
+        run: |
+          echo "---- Dist directory contents ----"
+          if [ -d "dist" ]; then ls -la dist; else echo "dist/ not found"; fi
+
+  publish:
+    name: Publish to npm (only on main)
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build component library (ensure dist exists)
+        run: npm run build-component-library
+
+      - name: Commit generated dist files if needed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/
+          git commit -m "chore(build): build component library dist files" || echo "No changes to commit"
+
+      - name: Verify NPM token (whoami)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "NPM_TOKEN not set — skipping whoami check"
+            exit 0
+          fi
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          echo "Testing npm auth with 'npm whoami'..."
+          npm whoami || (echo "npm whoami failed; token may be invalid or require 2FA" && cat ~/.npmrc && exit 1)
+          rm -f ~/.npmrc
+
+      - name: Check if package version already published
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "Skipping version check — NPM_TOKEN not set"
+            exit 0
+          fi
+          echo "Preparing for publish..."
+
+      - name: Bump package version (patch)
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "NPM_TOKEN not set — skipping auto-version-bump"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          OLD_VERSION=$(node -p "require('./package.json').version")
+          npm version patch -m "chore(release): v%s [skip ci]"
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "Version bumped from $OLD_VERSION to $NEW_VERSION"
+          echo "Pushing version commit and tag..."
+          git push origin HEAD:main
+          git push origin --tags
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "Skipping publish — NPM_TOKEN not set"
+            exit 0
+          fi
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          npm publish --access public || (cat ~/.npmrc && exit 1)
+          rm -f ~/.npmrc

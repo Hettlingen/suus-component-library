@@ -90,92 +90,127 @@ export default function PostalCode({
                                        onSuggestionSelect,
                                        ...rest
                                    }: PostalCodeProps) {
-    const generatedId = useId();
-    const inputId = id ?? `${name}-${generatedId}`;
+     const generatedId = useId();
+     const inputId = id ?? `${name}-${generatedId}`;
 
-    const inputRef = useRef<HTMLInputElement | null>(null);
+     const inputRef = useRef<HTMLInputElement | null>(null);
+     const isSelectionRef = useRef(false);
 
     const [value, setValue] = useState("");
     const [suggestions, setSuggestions] = useState<PostalCodeSuggestion[]>([]);
     const [loading, setLoading] = useState(false);
     const [hasSearched, setHasSearched] = useState(false);
 
-    const isNumericInput = /^\d+$/.test(value.trim());
-    const showValidation = value.trim().length >= 4 && isNumericInput && !loading;
-    const isValidPostalCode =
-        showValidation &&
-        suggestions.some((suggestion) => suggestion.postalCode === value.trim());
+     // Check if input is in format "XXXX Ort" (postal code + locality)
+     const fullFormatMatch = value.trim().match(/^(\d+)\s+(.+)$/);
+     const isFullFormat = !!fullFormatMatch;
+     const fullFormatPostalCode = fullFormatMatch?.[1];
+     const fullFormatLocality = fullFormatMatch?.[2];
 
-    const isInvalidPostalCode = showValidation && !isValidPostalCode;
+     // Validate full format: check if this exact combination exists in suggestions
+     const isValidFullFormat =
+         isFullFormat &&
+         suggestions.some(
+             (suggestion) =>
+                 suggestion.postalCode === fullFormatPostalCode &&
+                 suggestion.locality === fullFormatLocality
+         );
 
-    useEffect(() => {
-        const query = value.trim();
+      // Original validation for numeric-only input
+      const isNumericInput = /^\d+$/.test(value.trim());
+      const showValidation = value.trim().length >= 4 && isNumericInput && !loading;
+      const isValidPostalCode =
+          showValidation &&
+          suggestions.some((suggestion) => suggestion.postalCode === value.trim());
 
-        if (query.length < 2) {
-            setSuggestions([]);
-            setHasSearched(false);
-            return;
-        }
+      const isInvalidPostalCode = showValidation && !isValidPostalCode;
 
-        const abortController = new AbortController();
+      // Show empty state message only for numeric inputs (postal codes), not for locality names
+      const shouldShowEmptyState =
+          hasSearched &&
+          value.trim().length >= 4 &&
+          suggestions.length === 0 &&
+          !loading &&
+          isNumericInput;
 
-        async function fetchLocalities() {
-            setLoading(true);
+      useEffect(() => {
+          const query = value.trim();
 
-            try {
-                const url = /^\d+$/.test(query)
-                    ? `https://openplzapi.org/ch/Localities?postalCode=${query}`
-                    : `https://openplzapi.org/ch/Localities?locality=${encodeURIComponent(query)}`;
+          if (query.length < 2) {
+              setSuggestions([]);
+              setHasSearched(false);
+              return;
+          }
 
-                const response = await fetch(url, {
-                    signal: abortController.signal,
-                });
+          // Skip search if we just selected a suggestion
+          if (isSelectionRef.current) {
+              isSelectionRef.current = false;
+              return;
+          }
 
-                if (!response.ok) {
-                    throw new Error("Postal-Code-Suche fehlgeschlagen");
-                }
+          const abortController = new AbortController();
 
-                const data: PostalCodeLocality[] = await response.json();
+          async function fetchLocalities() {
+              setLoading(true);
 
-                const uniqueSuggestions = Array.from(
-                    new Map(
-                        data.map((item) => {
-                            const label = `${item.postalCode} ${item.name}`;
+              try {
+                  // Extract postal code if input is in format "XXXX Ort"
+                  const postalCodeMatch = query.match(/^(\d+)\s/);
+                  const searchQuery = postalCodeMatch ? postalCodeMatch[1] : query;
 
-                            return [
-                                label,
-                                {
-                                    label,
-                                    postalCode: item.postalCode,
-                                    locality: item.name,
-                                },
-                            ];
-                        })
-                    ).values()
-                );
+                  const url = /^\d+$/.test(searchQuery)
+                      ? `https://openplzapi.org/ch/Localities?postalCode=${searchQuery}`
+                      : `https://openplzapi.org/ch/Localities?locality=${encodeURIComponent(searchQuery)}`;
 
-                setSuggestions(uniqueSuggestions.slice(0, 10));
-                setHasSearched(true);
-            } catch (error) {
-                if (abortController.signal.aborted) return;
+                  const response = await fetch(url, {
+                      signal: abortController.signal,
+                  });
 
-                console.error(error);
-                setSuggestions([]);
-                setHasSearched(true);
-            } finally {
-                if (!abortController.signal.aborted) {
-                    setLoading(false);
-                }
-            }
-        }
+                  if (!response.ok) {
+                      throw new Error("Postal-Code-Suche fehlgeschlagen");
+                  }
 
-        const timeoutId = window.setTimeout(fetchLocalities, 300);
+                  const data: PostalCodeLocality[] = await response.json();
 
-        return () => {
-            window.clearTimeout(timeoutId);
-            abortController.abort();
-        };
-    }, [value]);
+                  const uniqueSuggestions = Array.from(
+                      new Map(
+                          data.map((item) => {
+                              const label = `${item.postalCode} ${item.name}`;
+
+                              return [
+                                  label,
+                                  {
+                                      label,
+                                      postalCode: item.postalCode,
+                                      locality: item.name,
+                                  },
+                              ];
+                          })
+                      ).values()
+                  );
+
+                  setSuggestions(uniqueSuggestions.slice(0, 10));
+                  setHasSearched(true);
+              } catch (error) {
+                  if (abortController.signal.aborted) return;
+
+                  console.error(error);
+                  setSuggestions([]);
+                  setHasSearched(true);
+              } finally {
+                  if (!abortController.signal.aborted) {
+                      setLoading(false);
+                  }
+              }
+          }
+
+          const timeoutId = window.setTimeout(fetchLocalities, 300);
+
+          return () => {
+              window.clearTimeout(timeoutId);
+              abortController.abort();
+          };
+      }, [value]);
 
     function setInputElement(element: HTMLInputElement | null) {
         inputRef.current = element;
@@ -195,17 +230,19 @@ export default function PostalCode({
         onChange?.(event);
     }
 
-    function handleSuggestionClick(suggestion: PostalCodeSuggestion) {
-        setValue(suggestion.label);
-        setSuggestions([]);
-        onValueChange?.(suggestion.label);
-        onSuggestionSelect?.(suggestion);
+     function handleSuggestionClick(suggestion: PostalCodeSuggestion) {
+         isSelectionRef.current = true;
+         setValue(suggestion.label);
+         setSuggestions([]);
+         setHasSearched(false);
+         onValueChange?.(suggestion.label);
+         onSuggestionSelect?.(suggestion);
 
-        if (inputRef.current) {
-            inputRef.current.value = suggestion.label;
-            inputRef.current.dispatchEvent(new Event("input", { bubbles: true }));
-        }
-    }
+         if (inputRef.current) {
+             inputRef.current.value = suggestion.label;
+             inputRef.current.dispatchEvent(new Event("input", { bubbles: true }));
+         }
+     }
 
     return (
         <div className={styles.inputBlockVertical}>
@@ -237,7 +274,7 @@ export default function PostalCode({
                     className={[
                         styles.inputTextField,
                         variant === "glassy" ? styles.inputTextFieldGlassy : "",
-                        isValidPostalCode ? styles.inputValid : "",
+                        isValidPostalCode || isValidFullFormat ? styles.inputValid : "",
                         isInvalidPostalCode || error ? styles.inputError : "",
                         className ?? "",
                     ]
@@ -260,7 +297,7 @@ export default function PostalCode({
                                     onMouseDown={(event) => event.preventDefault()}
                                     onClick={() => handleSuggestionClick(suggestion)}
                                 >
-                  <span className={styles.postalCode}>
+                  <span>
                     {suggestion.postalCode}
                   </span>
                                     <span className={styles.locality}>{suggestion.locality}</span>
@@ -270,24 +307,30 @@ export default function PostalCode({
                     </ul>
                 )}
 
-                {hasSearched && value.trim().length >= 2 && suggestions.length === 0 && !loading && (
-                    <div className={styles.emptyState}>
-                        Keine Schweizer PLZ oder Ortschaft gefunden.
-                    </div>
-                )}
-            </div>
+                 {hasSearched && value.trim().length >= 2 && suggestions.length === 0 && !loading && !isValidFullFormat && !isInvalidPostalCode && (
+                     <div className={styles.emptyState}>
+                         Keine Schweizer PLZ oder Ortschaft gefunden.
+                     </div>
+                 )}
+             </div>
 
-            {isValidPostalCode && (
-                <span className={styles.successMessage}>
-          Gültige Schweizer Postleitzahl
-        </span>
-            )}
+             {isValidPostalCode && (
+                 <span className={styles.successMessage}>
+           Gültige Schweizer Postleitzahl
+         </span>
+             )}
 
-            {isInvalidPostalCode && (
-                <span className={styles.errorMessage}>
-          Diese Schweizer Postleitzahl wurde nicht gefunden.
-        </span>
-            )}
+             {isValidFullFormat && (
+                 <span className={styles.successMessage}>
+           Gültige Schweizer Postleitzahl
+         </span>
+             )}
+
+             {isInvalidPostalCode && (
+                 <span className={styles.errorMessage}>
+           Diese Schweizer Postleitzahl wurde nicht gefunden.
+         </span>
+             )}
 
             {error && (
                 <span id={`${name}-error`} className={styles.errorMessage}>

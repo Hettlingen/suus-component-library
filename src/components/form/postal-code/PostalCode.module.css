@@ -33,7 +33,7 @@
 
 .inputTextFieldGlassy {
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background: var(--form-background-glassy, rgba(255, 255, 255, 0.16));
+    background: var(--form-glassy-background-white-transparent, rgba(255, 255, 255, 0.16));
     backdrop-filter: blur(10px);
     color: #ffffff;
 }
@@ -46,19 +46,19 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
-.inputTextField:focus,
 .inputTextFieldGlassy:focus {
     outline: none;
-    border-color: var(--colors-juice-sugarcane, #a7b325);
+    border-color: var(--form-glassy-border-color-selected, #a7b325);
+}
+
+.inputTextField:focus {
+    outline: none;
+    border-color: var(--form-default-border-color-selected, #a7b325);
 }
 
 .inputTextField:disabled {
     cursor: not-allowed;
     opacity: 0.65;
-}
-
-.inputValid {
-    border-color: var(--colors-juice-sugarcane, #a7b325);
 }
 
 .inputError {
@@ -76,7 +76,7 @@
 
 .suggestionList {
     position: absolute;
-    top: calc(100% + 6px);
+    top: calc(100% + 3px);
     left: 0;
     right: 0;
     z-index: 20;
@@ -111,33 +111,24 @@
     background: #f3f4f6;
 }
 
-.postalCode {
-    font-weight: 800;
-    color: var(--colors-juice-sugarcane, #6a7a0a);
-}
-
 .locality {
     font-weight: 500;
 }
 
 .emptyState {
     position: absolute;
-    top: calc(100% + 6px);
+    top: calc(100% + 3px);
     left: 0;
     right: 0;
-    z-index: 20;
+    z-index: 10;
     padding: 12px 14px;
-    border-radius: 12px;
-    border: 1px solid #d1d5db;
-    background: #ffffff;
     color: #6b7280;
     font-size: 14px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .successMessage {
     font-size: 13px;
-    color: var(--colors-juice-sugarcane, #6a7a0a);
+    color: var(--color-juice-sugarcane, #6a7a0a);
     font-weight: 700;
 }
 

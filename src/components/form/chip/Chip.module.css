@@ -5,20 +5,57 @@
     width: fit-content;
     min-height: 40px;
     padding: 0 18px;
-    border-radius: 999px;
-    border: 1px solid var(--chip-border-color, #d1d5db);
-    background: var(--chip-background-color, #ffffff);
-    color: var(--chip-text-color, #272727);
+    border-radius: var(--chip-radius, 999px);
+    border: 1px solid;
     font-size: 14px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0.5px;
     white-space: nowrap;
-}
-
-.chipGlassy {
-    border-color: rgba(255, 255, 255, 0.7);
-    background: rgba(255, 255, 255, 0.1);
-    color: #f6ffef;
     backdrop-filter: blur(10px);
 }
+
+/* -------------------------------------------- */
+/* DEFAULT                                      */
+/* -------------------------------------------- */
+.chipDefault {
+    background: var(--chip-background-enabled, #ffffff);
+    color: var(--chip-text-color-default, #272727);
+    border-color: var(--chip-border-color, #d1d5db);
+}
+
+.chipDefault:hover {
+    background: var(--chip-background-hover, #ffffff);
+    color: var(--chip-text-color-default, #272727);
+    border-color: var(--chip-border-color-hover, #d1d5db);
+}
+
+/* -------------------------------------------- */
+/* GLASSY                                       */
+/* -------------------------------------------- */
+.chipGlassy {
+    background: var(--chip-glassy-background-enabled, #ffffff);
+    color: var(--chip-glassy-text-color-default);
+    border-color: var(--chip-border-color-hover, #d1d5db);
+}
+
+.chipGlassy:hover {
+    background: var(--chip-glassy-background-hover, #ffffff);
+    color: var(--chip-glassy-text-color-default, #272727);
+    border-color: var(--chip-border-color-hover, #d1d5db);
+}
+
+/* Checked state (used for toggle behaviour) */
+.chipChecked {
+    background: var(--chip-glassy-background-checked, #cfa428);
+    color: var(--chip-glassy-text-color-default, #555454);
+    border-color: var(--chip-border-color-hover, #a7b325);
+}
+
+/* Non-clickable / presentation-only */
+.chipDisabled {
+    opacity: 0.7;
+    cursor: default;
+    pointer-events: none;
+}
+

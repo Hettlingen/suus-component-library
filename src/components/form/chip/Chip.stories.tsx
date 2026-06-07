@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import Chip from "./Chip";
 
@@ -34,13 +35,42 @@ export const Default: Story = {
     args: {
         children: "Bio",
         variant: "default",
+        clickable: false,
     },
 };
 
-export const DefaultLongText: Story = {
-    args: {
-        children: "Limited Edition",
-        variant: "default",
+export const DefaultToggleUncontrolled: Story = {
+    render: () => (
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            <Chip defaultChecked onCheckedChange={(v) => console.log("uncontrolled checked", v)}>
+                Option A
+            </Chip>
+            <Chip defaultChecked={false} onCheckedChange={(v) => console.log("uncontrolled checked", v)}>
+                Option B
+            </Chip>
+        </div>
+    ),
+};
+
+export const DefaultToggleControlled: Story = {
+    render: () => {
+        const DefaultToggleControlled = () => {
+            const [a, setA] = useState(false);
+            const [b, setB] = useState(true);
+
+            return (
+                <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                    <Chip checked={a} onCheckedChange={(v) => setA(v)}>
+                        Option A ({a ? "on" : "off"})
+                    </Chip>
+                    <Chip checked={b} onCheckedChange={(v) => setB(v)}>
+                        Option B ({b ? "on" : "off"})
+                    </Chip>
+                </div>
+            );
+        };
+
+        return <DefaultToggleControlled />;
     },
 };
 
@@ -48,6 +78,7 @@ export const Glassy: Story = {
     args: {
         children: "Sugarcane",
         variant: "glassy",
+        clickable: false,
     },
     globals: {
         backgrounds: {
@@ -56,10 +87,43 @@ export const Glassy: Story = {
     },
 };
 
-export const GlassyLongText: Story = {
-    args: {
-        children: "Tamarind Ginger Lime",
-        variant: "glassy",
+export const GlassyToggleUncontrolled: Story = {
+    render: () => (
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            <Chip defaultChecked onCheckedChange={(v) => console.log("uncontrolled checked", v)}>
+                Option A
+            </Chip>
+            <Chip defaultChecked={false} onCheckedChange={(v) => console.log("uncontrolled checked", v)}>
+                Option B
+            </Chip>
+        </div>
+    ),
+    globals: {
+        backgrounds: {
+            value: "dark",
+        },
+    },
+};
+
+export const GlassyToggleControlled: Story = {
+    render: () => {
+        const GlassyToggleControlled = () => {
+            const [a, setA] = useState(false);
+            const [b, setB] = useState(true);
+
+            return (
+                <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                    <Chip checked={a} onCheckedChange={(v) => setA(v)}>
+                        Option A ({a ? "on" : "off"})
+                    </Chip>
+                    <Chip checked={b} onCheckedChange={(v) => setB(v)}>
+                        Option B ({b ? "on" : "off"})
+                    </Chip>
+                </div>
+            );
+        };
+
+        return <GlassyToggleControlled />;
     },
     globals: {
         backgrounds: {
@@ -73,6 +137,7 @@ export const WithTitleAttribute: Story = {
         children: "Guava",
         variant: "default",
         title: "Geschmacksrichtung Guava",
+        clickable: false,
     },
 };
 
@@ -130,3 +195,11 @@ export const MultipleGlassyChips: Story = {
         },
     },
 };
+
+export const NonClickable: Story = {
+    args: {
+        children: "Nicht klickbar",
+        clickable: false,
+    },
+};
+

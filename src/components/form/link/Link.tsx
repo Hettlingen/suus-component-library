@@ -61,7 +61,7 @@ export default function Link({
             rel={href && newTab ? "noopener noreferrer" : undefined}
             className={[
                 styles.appLink,
-                variant === "glassy" ? styles.appLinkGlassy : "",
+                variant === "glassy" ? styles.appLinkGlassy : styles.appLinkDefault,
                 className ?? "",
             ]
                 .filter(Boolean)

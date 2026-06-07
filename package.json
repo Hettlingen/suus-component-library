@@ -51,6 +51,6 @@
   },
   "dependencies": {
     "msw": "^2.14.6",
-    "suus-design-tokens": "^1.0.15"
+    "suus-design-tokens": "^1.0.18"
   }
 }

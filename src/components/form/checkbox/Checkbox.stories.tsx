@@ -26,14 +26,6 @@ export const Default: Story = {
     },
 };
 
-export const Checked: Story = {
-    args: {
-        name: "checked",
-        label: "Label",
-        defaultChecked: true,
-    },
-};
-
 export const Disabled: Story = {
     args: {
         name: "disabled",
@@ -59,20 +51,64 @@ export const Error: Story = {
     },
 };
 
-export const ErrorChecked: Story = {
-    args: {
-        name: "error-checked",
-        label: "Label",
-        error: "Bitte auswählen.",
-        defaultChecked: true,
-    },
-};
-
 export const Glassy: Story = {
     args: {
         name: "glassy",
         label: "Label",
         variant: "glassy",
+    },
+    decorators: [
+        (Story) => (
+            <div
+                style={{
+                    background: "var(--colors-juice-sugarcane, #b5cc35)",
+                    padding: "2rem",
+                }}
+            >
+                <Story />
+            </div>
+        ),
+    ],
+    globals: {
+        backgrounds: {
+            value: "dark",
+        },
+    },
+};
+
+export const GlassyDisabled: Story = {
+    args: {
+        name: "glassy",
+        label: "Label",
+        variant: "glassy",
+        disabled: true,
+    },
+    decorators: [
+        (Story) => (
+            <div
+                style={{
+                    background: "var(--colors-juice-sugarcane, #b5cc35)",
+                    padding: "2rem",
+                }}
+            >
+                <Story />
+            </div>
+        ),
+    ],
+    globals: {
+        backgrounds: {
+            value: "dark",
+        },
+    },
+};
+
+export const GlassyDisabledChecked: Story = {
+    args: {
+        name: "glassy",
+        label: "Label",
+        variant: "glassy",
+        disabled: true,
+        defaultChecked: true,
     },
     decorators: [
         (Story) => (

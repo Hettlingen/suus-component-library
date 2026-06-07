@@ -3,7 +3,6 @@
   align-items: center;
   gap: 8px;
   width: fit-content;
-  color: var(--link-text-color, #272727);
   font-size: 16px;
   font-weight: 700;
   line-height: 1.4;
@@ -14,22 +13,26 @@
           transform 0.2s ease;
 }
 
-.appLink:hover {
-  color: var(--colors-juice-sugarcane, #a7b325);
+/* -------------------------------------------- */
+/* DEFAULT                                      */
+/* -------------------------------------------- */
+.appLinkDefault {
+  color: var(--link-default-text-label, #272727);
 }
 
-.appLink:focus-visible {
-  outline: 2px solid var(--colors-juice-sugarcane, #a7b325);
-  outline-offset: 4px;
-  border-radius: 6px;
+.appLinkDefault:hover {
+  color: var(--link-default-text-hover, #272727);
 }
 
+/* -------------------------------------------- */
+/* GLASSY                                       */
+/* -------------------------------------------- */
 .appLinkGlassy {
-  color: #ffffff;
+  color: var(--link-glassy-text-label, #272727);
 }
 
 .appLinkGlassy:hover {
-  color: #f6ffef;
+  color: var(--link-glassy-text-hover, #272727);
 }
 
 .label {

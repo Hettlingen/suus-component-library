@@ -64,8 +64,8 @@
 /* ---------------------------------------------- */
 
 .switchBackgroundGlassy {
-  background-color: var(--form-background-glassy, rgba(255, 255, 255, 0.72));
-  border: 1px solid var(--form-border-selected-glassy, rgba(255, 255, 255, 0.2));
+  background-color: var(--form-glassy-background-white-transparent, rgba(255, 255, 255, 0.72));
+  border: 1px solid var(--form-glassy-border-color-enabled, rgba(255, 255, 255, 0.2));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
