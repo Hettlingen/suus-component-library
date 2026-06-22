@@ -56,7 +56,8 @@
 /* ---------------------------------------------- */
 
 .optionButton {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -79,9 +80,10 @@
 }
 
 .optionTitle {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .optionDescription {
