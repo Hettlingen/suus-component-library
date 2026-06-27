@@ -23,7 +23,7 @@
     width: 100%;
     height: 50px;
     padding: 0 48px 0 14px;
-    border-radius: var(--form-radius-default, 12px);
+    border-radius: var(--form-input-radius, 12px);
     border: 1px solid #d1d5db;
     background: #ffffff;
     color: #272727;
@@ -53,7 +53,7 @@
 
 .inputDateFieldGlassy {
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background: var(--form-background-glassy, rgba(255, 255, 255, 0.16));
+    background: var(--form-input-glassy-background-enabled, rgba(255, 255, 255, 0.16));
     backdrop-filter: blur(10px);
     color: #ffffff;
 }
@@ -61,7 +61,7 @@
 .inputDateField:focus,
 .inputDateFieldGlassy:focus {
     outline: none;
-    border-color: var(--colors-juice-sugarcane, #a7b325);
+    border-color: var(--color-juice-sugarcane, #a7b325);
 }
 
 .inputDateField:disabled {
@@ -85,7 +85,7 @@
     padding: 0;
     border: 0;
     background: transparent;
-    color: var(--colors-juice-sugarcane, #6a7a0a);
+    color: var(--color-juice-sugarcane, #6a7a0a);
     cursor: pointer;
     transform: translateY(-50%);
 }
@@ -96,7 +96,7 @@
 }
 
 .calendarIconButton:focus-visible {
-    outline: 2px solid var(--colors-juice-sugarcane, #a7b325);
+    outline: 2px solid var(--color-juice-sugarcane, #a7b325);
     outline-offset: 3px;
     border-radius: 999px;
 }

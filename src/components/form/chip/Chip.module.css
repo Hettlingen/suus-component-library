@@ -21,7 +21,7 @@
 .chipDefault {
     background: var(--chip-background-enabled, #ffffff);
     color: var(--chip-text-color-default, #272727);
-    border-color: var(--chip-border-color, #d1d5db);
+    border-color: var(--chip-border-color-default, #d1d5db);
 }
 
 .chipDefault:hover {
@@ -47,7 +47,7 @@
 
 /* Checked state (used for toggle behaviour) */
 .chipChecked {
-    background: var(--chip-glassy-background-checked, #cfa428);
+    background: var(--chip-glassy-background-checked, #37ae61);
     color: var(--chip-glassy-text-color-default, #555454);
     border-color: var(--chip-border-color-hover, #a7b325);
 }

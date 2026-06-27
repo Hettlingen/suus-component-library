@@ -5,28 +5,28 @@
 }
 
 .inputLabel {
-    color: #272727;
+    color: var(--form-input-default-text-label);
 }
 
 .inputLabelGlassy {
-    color: white;
+    color: var(--form-input-glassy-text-label);
 }
 
 .inputSelectField {
     width: 100%;
     height: 50px;
-    border-radius: var(--form-radius);
+    border-radius: var(--form-input-radius);
     padding: 0 14px;
 
     color: #403f3f;
     border: 1px solid #d1d5db;
-    background: var(--form-default-background-enabled);
+    background: var(--form-input-default-background-enabled);
 }
 
 .inputSelectFieldGlassy {
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    background: var(--form-glassy-background-enabled);
+    background: var(--form-input-glassy-background-enabled);
     backdrop-filter: blur(10px);
 }
 
@@ -36,12 +36,12 @@
 }
 
 .inputError {
-    border-color: #de6565;
+    border-color: var(--form-message-error-border-color);
 }
 
 .errorMessage {
-    font-size: 13px;
-    color: #de6565;
+    font-size: var(--form-message-font-size);
+    color: var(--form-message-error-text-color);
 }
 
 /* Progressive Enhancement für moderne Customizable Selects */
@@ -58,20 +58,20 @@
 
     /* Default Picker Panel */
     .inputSelectField::picker(select) {
-        background: var(--form-default-background-enabled);
+        background: var(--form-input-default-background-enabled);
         color: #403f3f;
         border: 1px solid #d1d5db;
-        border-radius: var(--form-radius);
+        border-radius: var(--form-input-radius);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
         padding: 6px;
     }
 
     /* Glassy Picker Panel */
     .inputSelectFieldGlassy::picker(select) {
-        background: var(--form-glassy-background-enabled);
+        background: var(--form-input-glassy-background-enabled);
         color: white;
         border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: var(--form-radius);
+        border-radius: var(--form-input-radius);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
         backdrop-filter: blur(16px);
         padding: 6px;
@@ -90,7 +90,7 @@
 
     .inputSelectField option {
         padding: 10px 12px;
-        border-radius: calc(var(--form-radius) - 4px);
+        border-radius: calc(var(--form-input-radius) - 4px);
     }
 
     .inputSelectField option:hover,
@@ -114,10 +114,10 @@
     }
 
     .inputSelectField option:disabled {
-        color: #9ca3af;
+        color: var(--color-form-background-disabled);
     }
 
     .inputSelectFieldGlassy option:disabled {
-        color: rgba(255, 255, 255, 0.55);
+        color: var(--color-form-background-disabled);
     }
 }

@@ -40,7 +40,6 @@ export default function RadioButton({
                                         options,
                                         error,
                                         variant = "default",
-                                        className,
                                         disabled,
                                         value,
                                         defaultValue,
@@ -52,9 +51,7 @@ export default function RadioButton({
     return (
         <fieldset
             className={[
-                styles.radioGroup,
-                variant === "glassy" ? styles.radioGroupGlassy : "",
-                className ?? "",
+                styles.radioGroup
             ]
                 .filter(Boolean)
                 .join(" ")}

@@ -1,8 +1,8 @@
 .checkboxWrapper {
   --checkbox-color: var(--color-juice-sugarcane, #899822);
   --checkbox-error-color: var(--color-status-error, #de6565);
-  --checkbox-disabled-color: var(--form-default-background-disabled, #dfdfdf);
-  --checkbox-text-color: var(--form-default-text-label, #5b5a5a);
+  --checkbox-disabled-color: var(--form-input-default-background-disabled, #dfdfdf);
+  --checkbox-text-color: var(--form-input-default-text-label, #5b5a5a);
   --checkbox-focus-color: rgba(137, 152, 34, 0.28);
 
   display: flex;
@@ -74,7 +74,7 @@
 
 /* Text */
 .checkboxText {
-  color: var(--form-default-text-label);
+  color: var(--form-input-default-text-label);
   font-size: var(--typeface-font-size-default-20, 1.1rem);
   font-weight: var(--typeface-font-weight-bold-700, 700);
   line-height: 1.2;
@@ -106,7 +106,7 @@
 /* Disabled */
 .checkboxWrapperDisabled {
   --checkbox-color: var(--checkbox-disabled-color);
-  --checkbox-text-color: var(--form-default-text-content-disabled, #5b5a5a);
+  --checkbox-text-color: var(--form-input-default-text-label, #5b5a5a);
 }
 
 .checkboxInput:disabled + .checkboxLabel {

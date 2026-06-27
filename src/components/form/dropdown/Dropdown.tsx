@@ -27,7 +27,7 @@ export type DropdownProps = {
  *   options={[
  *     { label: "Sugarcane", value: "sugarcane" },
  *     { label: "Tamarind", value: "tamarind" },
- *     { label: "Guava", value: "guava" },
+ *     { label: "Guaraná", value: "guarana" },
  *     { label: "Ice Tea", value: "icetea" },
  *   ]}
  *   {...register("flavour")}
@@ -49,8 +49,7 @@ export default function Dropdown({
             <label
                 htmlFor={name}
                 className={[
-                    styles.inputLabel,
-                    variant === "glassy" ? styles.inputLabelGlassy : "",
+                    variant === "glassy" ? styles.inputLabelGlassy : styles.inputLabel
                 ]
                     .filter(Boolean)
                     .join(" ")}

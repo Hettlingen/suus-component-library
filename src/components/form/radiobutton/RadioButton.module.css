@@ -1,3 +1,7 @@
+/* ---------------------------------------------- */
+/* Shared States                                  */
+/* ---------------------------------------------- */
+
 .radioGroup {
     display: flex;
     flex-direction: column;
@@ -6,19 +10,6 @@
     border: 0;
     padding: 0;
     margin: 0;
-}
-
-.radioGroupGlassy {
-    color: #ffffff;
-}
-
-.radioLabel {
-    margin: 0;
-    color: #5b5a5a;
-}
-
-.radioLabelGlassy {
-    color: #ffffff;
 }
 
 .optionGroup {
@@ -38,22 +29,25 @@
     cursor: not-allowed;
 }
 
-.radioInput {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
+.optionWrapper:hover .optionButton {
+    transform: translateY(-1px);
 }
 
-/* ---------------------------------------------- */
-/* Base                                           */
-/* Nur Layout, keine Varianten-Farben              */
-/* ---------------------------------------------- */
+.radioInput:disabled + .optionButton {
+    cursor: not-allowed;
+    opacity: 0.55;
+    transform: none;
+}
+
+.radioInput:disabled + .optionButton:hover {
+    transform: none;
+}
+
+.errorMessage {
+    font-size: 13px;
+    color: #de6565;
+    font-weight: 700;
+}
 
 .optionButton {
     display: flex;
@@ -79,73 +73,24 @@
             opacity 160ms ease;
 }
 
+.radioInput {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
 .optionTitle {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
-
-.optionDescription {
-    display: none;
-}
-
-/* ---------------------------------------------- */
-/* Default Variante                               */
-/* ---------------------------------------------- */
-
-.optionButtonDefault {
-    background-color: #dedede;
-    border-color: transparent;
-    color: rgba(255, 255, 255, 0.86);
-}
-
-.radioInput:checked + .optionButtonDefault {
-    background-color: var(--color-juice-sugarcane, #a7b325);
-    border-color: var(--color-juice-sugarcane, #a7b325);
-    color: #ffffff;
-}
-
-.radioInput:not(:checked):not(:disabled) + .optionButtonDefault:hover {
-    background-color: #d4d4d4;
-}
-
-.radioInput:focus-visible + .optionButtonDefault {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(167, 179, 37, 0.35);
-}
-
-/* ---------------------------------------------- */
-/* Glassy Variante                                */
-/* ---------------------------------------------- */
-
-.optionButtonGlassy {
-    background-color: rgba(255, 255, 255, 0.72);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.86);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-.radioInput:checked + .optionButtonGlassy {
-    background-color: var(--color-green-bright, #dbf057);
-    border-color: var(--color-green-bright, #dbf057);
-    color: #ffffff;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-}
-
-.radioInput:not(:checked):not(:disabled) + .optionButtonGlassy:hover {
-    background-color: rgba(255, 255, 255, 0.82);
-}
-
-.radioInput:focus-visible + .optionButtonGlassy {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
-}
-
-/* ---------------------------------------------- */
-/* Shared States                                  */
-/* ---------------------------------------------- */
 
 .optionWrapper:hover .optionButton {
     transform: translateY(-1px);
@@ -157,8 +102,72 @@
     transform: none;
 }
 
-.radioInput:disabled + .optionButton:hover {
-    transform: none;
+.optionDescription {
+    display: none;
+}
+
+/* -------------------------------------------- */
+/* DEFAULT                                      */
+/* -------------------------------------------- */
+.radioLabel {
+    margin-bottom: 12px;
+    color: var(--form-input-default-text-label, #272727);
+}
+
+.optionButtonDefault {
+    background-color: var(--form-input-default-background-enabled, #ffffff);
+    border-color: var(--form-input-default-border-color-enabled, #b5b4b4);
+    color: var(--form-input-default-text-label);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.radioInput:checked + .optionButtonDefault {
+    background-color: var(--color-juice-sugarcane, #a7b325);
+    border-color: var(--color-juice-sugarcane, #a7b325);
+    color: #ffffff;
+}
+
+.radioInput:not(:checked):not(:disabled) + .optionButtonDefault:hover {
+    background-color: var(--form-input-default-background-hover, #a7b325);
+    border-color: var(--form-input-default-border-color-hover, #a7b325);
+}
+
+.radioInput:focus-visible + .optionButtonDefault {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(167, 179, 37, 0.35);
+}
+
+/* -------------------------------------------- */
+/* GLASSY                                       */
+/* -------------------------------------------- */
+
+.radioLabelGlassy {
+    color: var(--form-input-glassy-text-label, #ffffff);
+}
+
+.optionButtonGlassy {
+    background-color: rgba(255, 255, 255, 0.72);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.radioInput:not(:checked):not(:disabled) + .optionButtonGlassy:hover {
+    background-color: rgba(255, 255, 255, 0.82);
+}
+
+.radioInput:checked + .optionButtonGlassy {
+    background-color: var(--color-green-bright, #dbf057);
+    border-color: var(--color-green-bright, #dbf057);
+    color: #ffffff;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.radioInput:focus-visible + .optionButtonGlassy {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
 }
 
 /* Error sollte bewusst nach den Varianten kommen,
@@ -166,12 +175,6 @@
 
 .optionButtonError {
     border-color: #de6565;
-}
-
-.errorMessage {
-    font-size: 13px;
-    color: #de6565;
-    font-weight: 700;
 }
 
 /* ---------------------------------------------- */

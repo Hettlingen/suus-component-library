@@ -1,4 +1,5 @@
 // Import global styles
+import "suus-design-tokens/tokens.css";
 import "./styles/index.css";
 
 // Export all components here
