@@ -61,8 +61,8 @@ export default function RadioButton({
             {label && (
                 <legend
                     className={[
-                        styles.radioLabel,
-                        variant === "glassy" ? styles.radioLabelGlassy : "",
+                        styles.radioLegend,
+                        variant === "glassy" ? "inputLabelGlassy" : "inputLabel",
                     ]
                         .filter(Boolean)
                         .join(" ")}

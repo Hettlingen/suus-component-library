@@ -111,9 +111,8 @@
 /* -------------------------------------------- */
 /* DEFAULT                                      */
 /* -------------------------------------------- */
-.radioLabel {
+.radioLegend {
     margin-bottom: 12px;
-    color: var(--form-input-default-text-label, #272727);
 }
 
 .optionButtonDefault {
@@ -143,10 +142,6 @@
 /* -------------------------------------------- */
 /* GLASSY                                       */
 /* -------------------------------------------- */
-
-.radioLabelGlassy {
-    color: var(--form-input-glassy-text-label, #ffffff);
-}
 
 .optionButtonGlassy {
     background-color: rgba(255, 255, 255, 0.72);

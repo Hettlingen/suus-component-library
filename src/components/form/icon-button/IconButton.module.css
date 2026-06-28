@@ -1,0 +1,116 @@
+.iconButton {
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--button-radius-default, 10px);
+    color: var(--button-secondary-text-default, #272727);
+    cursor: pointer;
+    transition:
+            transform 0.15s ease,
+            background 0.2s ease,
+            color 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
+}
+
+.withFrame {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--button-border-color, #d1d5db);
+    background: var(--button-secondary-background-default, #ffffff);
+}
+
+.withoutFrame {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+}
+
+.iconButton:hover {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.withFrame:hover {
+    background: var(--button-secondary-background-hover, #f3f4f6);
+}
+
+.withoutFrame:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.iconButton:active {
+    transform: translateY(0) scale(1);
+}
+
+.iconButton:focus-visible {
+    outline: 2px solid var(--colors-juice-sugarcane, #a7b325);
+    outline-offset: 3px;
+}
+
+.iconButton:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    transform: none;
+}
+
+.glassy {
+    color: #ffffff;
+}
+
+.glassy.withFrame {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.glassy.withFrame:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.glassy.withoutFrame:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.active {
+    color: var(--colors-juice-sugarcane, #6a7a0a);
+}
+
+.active.withFrame {
+    border-color: var(--colors-juice-sugarcane, #a7b325);
+    background: rgba(167, 179, 37, 0.14);
+}
+
+.small {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+.large {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.svgIcon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.small .svgIcon {
+    width: 16px;
+    height: 16px;
+}
+
+.large .svgIcon {
+    width: 22px;
+    height: 22px;
+}
