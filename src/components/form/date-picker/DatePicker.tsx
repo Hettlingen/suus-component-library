@@ -103,12 +103,12 @@ export default function DatePicker({
     }
 
     return (
-        <div className={styles.inputBlockVertical}>
+        <div className="inputBlockVertical">
             <label
                 htmlFor={inputId}
                 className={[
-                    styles.inputLabel,
-                    variant === "glassy" ? styles.inputLabelGlassy : "",
+                    "inputLabel",
+                    variant === "glassy" ? "inputLabelGlassy" : "",
                 ]
                     .filter(Boolean)
                     .join(" ")}

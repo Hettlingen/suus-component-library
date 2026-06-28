@@ -1,20 +1,6 @@
-.inputBlockVertical {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.inputBlockVerticalTight {
+    --form-input-block-gap: 6px;
     width: 100%;
-}
-
-.inputLabel {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #272727;
-}
-
-.inputLabelGlassy {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
 }
 
 .inputTextField {

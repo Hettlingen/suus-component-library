@@ -42,13 +42,13 @@ export default function Password({
     }
 
     return (
-        <div className={styles.inputBlockVertical}>
+        <div className="inputBlockVertical">
             {label && (
                 <label
                     htmlFor={inputId}
                     className={[
-                        styles.inputLabel,
-                        variant === "glassy" ? styles.inputLabelGlassy : "",
+                        "inputLabel",
+                        variant === "glassy" ? "inputLabelGlassy" : "",
                     ]
                         .filter(Boolean)
                         .join(" ")}

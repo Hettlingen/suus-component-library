@@ -45,11 +45,12 @@ export default function Dropdown({
                                      ...rest
                                  }: DropdownProps) {
     return (
-        <div className={styles.inputBlockVertical}>
+        <div className="inputBlockVertical">
             <label
                 htmlFor={name}
                 className={[
-                    variant === "glassy" ? styles.inputLabelGlassy : styles.inputLabel
+                    "inputLabel",
+                    variant === "glassy" ? "inputLabelGlassy" : "",
                 ]
                     .filter(Boolean)
                     .join(" ")}

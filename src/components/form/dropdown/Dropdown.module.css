@@ -1,17 +1,3 @@
-.inputBlockVertical {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.inputLabel {
-    color: var(--form-input-default-text-label);
-}
-
-.inputLabelGlassy {
-    color: var(--form-input-glassy-text-label);
-}
-
 .inputSelectField {
     width: 100%;
     height: 50px;

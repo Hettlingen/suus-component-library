@@ -17,3 +17,43 @@ select,
 textarea {
     font: inherit;
 }
+
+/* ---------------------------------------------- */
+/* Input Elements                                 */
+/* ---------------------------------------------- */
+.inputBlockVertical {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 110px;
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 1024px) {
+    .inputBlockVertical {
+        margin-bottom: 8px;
+    }
+}
+
+.inputBlockHorizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.inputLabel {
+    font-family: var(--typeface-font-family-sans-serif), sans-serif;
+    font-weight: var(--typeface-font-weight-regular-400);
+    font-size: var(--typeface-font-size-default-20)/var(--typeface-line-height-large-150);
+    color: var(--form-input-default-text-label);
+}
+
+.inputLabelGlassy {
+    font-family: var(--typeface-font-family-sans-serif), sans-serif;
+    font-weight: var(--typeface-font-weight-regular-400);
+    font-size: var(--typeface-font-size-default-20)/var(--typeface-line-height-large-150);
+    color: var(--form-input-glassy-text-label);
+}
