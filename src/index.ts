@@ -21,6 +21,9 @@ export type { DropdownProps } from "./components/form/dropdown/Dropdown";
 export { default as Link } from "./components/form/link/Link";
 export type { LinkProps } from "./components/form/link/Link";
 
+export { default as IconButton } from "./components/form/icon-button/IconButton";
+export type { IconButtonProps } from "./components/form/icon-button/IconButton";
+
 export { default as Password } from "./components/form/password/Password";
 export type { PasswordProps } from "./components/form/password/Password";
 
