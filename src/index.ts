@@ -6,6 +6,9 @@ import "./styles/index.css";
 export { default as Button } from "./components/form/button/Button";
 export type { ButtonProps, ColorToken } from "./components/form/button/Button";
 
+export { default as BannerHero } from "./components/banner-hero/banner-hero";
+export type { BannerHeroProps, BannerColorToken } from "./components/banner-hero/banner-hero";
+
 export { default as Checkbox } from "./components/form/checkbox/Checkbox";
 export type { CheckboxProps } from "./components/form/checkbox/Checkbox";
 

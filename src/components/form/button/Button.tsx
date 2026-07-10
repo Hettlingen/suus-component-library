@@ -4,7 +4,7 @@ import styles from "./Button.module.css";
 export type ColorToken =
     | "--color-juice-sugarcane"
     | "--color-juice-tamarind"
-    | "--color-juice-guava"
+    | "--color-juice-guarana"
     | "--color-juice-icetea";
 
 export type ButtonProps = {
