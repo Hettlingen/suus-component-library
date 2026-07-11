@@ -33,7 +33,6 @@ textarea {
     gap: 4px;
     align-items: flex-start; /* Elemente links ausrichten */
     text-align: left;
-    margin-bottom: clamp(20px, calc(16px + 0.78125vw), 24px);
 }
 
 .inputBlockHorizontal {
@@ -41,7 +40,6 @@ textarea {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: clamp(20px, calc(16px + 0.78125vw), 24px);
 }
 
 .inputLabel {
