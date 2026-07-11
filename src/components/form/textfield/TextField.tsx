@@ -60,15 +60,21 @@ export default function TextField({
                     .filter(Boolean)
                     .join(" ")}
                 aria-invalid={!!error}
-                aria-describedby={error ? `${name}-error` : undefined}
+                aria-describedby={`${name}-error`}
                 {...rest}
             />
 
-            {error && (
-                <span id={`${name}-error`} className={styles.errorMessage}>
-                    {error}
-                 </span>
-            )}
+            <span
+                id={`${name}-error`}
+                className={[
+                    styles.errorMessage,
+                    !error ? styles.errorMessageHidden : "",
+                ]
+                    .filter(Boolean)
+                    .join(" ")}
+            >
+                {error || "\u00a0"}
+            </span>
         </div>
     );
 }

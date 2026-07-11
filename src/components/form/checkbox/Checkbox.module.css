@@ -145,9 +145,15 @@
 }
 
 .errorMessage {
+  display: block;
+  min-height: 1.2em;
   font-size: 0.8rem;
   color: var(--checkbox-error-color);
   padding-left: 2.75rem;
+}
+
+.errorMessageHidden {
+  visibility: hidden;
 }
 
 /* Glassy / auf grünem Hintergrund */

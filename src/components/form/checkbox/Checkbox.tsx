@@ -39,7 +39,7 @@ export default function Checkbox({
                 disabled={disabled}
                 className={styles.checkboxInput}
                 aria-invalid={!!error}
-                aria-describedby={error ? `${name}-error` : undefined}
+                aria-describedby={`${name}-error`}
                 {...rest}
             />
 
@@ -58,11 +58,17 @@ export default function Checkbox({
                 <span className={styles.checkboxText}>{label}</span>
             </label>
 
-            {error && (
-                <span id={`${name}-error`} className={styles.errorMessage}>
-          {error}
-        </span>
-            )}
+            <span
+                id={`${name}-error`}
+                className={[
+                    styles.errorMessage,
+                    !error ? styles.errorMessageHidden : "",
+                ]
+                    .filter(Boolean)
+                    .join(" ")}
+            >
+                {error || "\u00a0"}
+            </span>
         </div>
     );
 }

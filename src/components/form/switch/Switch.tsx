@@ -40,7 +40,7 @@ export default function Switch({
                     disabled={disabled}
                     className={styles.switchCheckbox}
                     aria-invalid={!!error}
-                    aria-describedby={error ? `${name}-error` : undefined}
+                    aria-describedby={`${name}-error`}
                     {...rest}
                 />
 
@@ -79,11 +79,17 @@ export default function Switch({
                     {label && <span className={styles.switchText}>{label}</span>}
                 </label>
 
-                {error && (
-                    <span id={`${name}-error`} className={styles.errorMessage}>
-                        {error}
-                    </span>
-                )}
+                <span
+                    id={`${name}-error`}
+                    className={[
+                        styles.errorMessage,
+                        !error ? styles.errorMessageHidden : "",
+                    ]
+                        .filter(Boolean)
+                        .join(" ")}
+                >
+                    {error || "\u00a0"}
+                </span>
             </div>
         </div>
     );

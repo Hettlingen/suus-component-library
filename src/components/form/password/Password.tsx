@@ -74,7 +74,7 @@ export default function Password({
                         .filter(Boolean)
                         .join(" ")}
                     aria-invalid={!!error}
-                    aria-describedby={error ? `${name}-error` : undefined}
+                    aria-describedby={`${name}-error`}
                     {...rest}
                 />
 
@@ -90,11 +90,17 @@ export default function Password({
                 </button>
             </div>
 
-            {error && (
-                <span id={`${name}-error`} className={styles.errorMessage}>
-          {error}
-        </span>
-            )}
+            <span
+                id={`${name}-error`}
+                className={[
+                    styles.errorMessage,
+                    !error ? styles.errorMessageHidden : "",
+                ]
+                    .filter(Boolean)
+                    .join(" ")}
+            >
+                {error || "\u00a0"}
+            </span>
         </div>
     );
 }

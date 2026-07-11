@@ -44,9 +44,15 @@
 }
 
 .errorMessage {
+    display: block;
+    min-height: 1.2em;
     font-size: 13px;
     color: #de6565;
     font-weight: 700;
+}
+
+.errorMessageHidden {
+    visibility: hidden;
 }
 
 .optionButton {

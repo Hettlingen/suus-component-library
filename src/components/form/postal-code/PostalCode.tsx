@@ -124,6 +124,11 @@ export default function PostalCode({
           suggestions.some((suggestion) => suggestion.postalCode === value.trim());
 
       const isInvalidPostalCode = showValidation && !isValidPostalCode;
+      const postalCodeErrorMessage = error ?? (
+          isInvalidPostalCode
+              ? "Diese Schweizer Postleitzahl wurde nicht gefunden."
+              : undefined
+      );
 
       // Show empty state message only for numeric inputs (postal codes), not for locality names
       const shouldShowEmptyState =
@@ -280,8 +285,8 @@ export default function PostalCode({
                     ]
                         .filter(Boolean)
                         .join(" ")}
-                    aria-invalid={!!error || isInvalidPostalCode}
-                    aria-describedby={error ? `${name}-error` : undefined}
+                    aria-invalid={!!postalCodeErrorMessage}
+                    aria-describedby={`${name}-error`}
                     {...rest}
                 />
 
@@ -326,17 +331,17 @@ export default function PostalCode({
          </span>
              )}
 
-             {isInvalidPostalCode && (
-                 <span className={styles.errorMessage}>
-           Diese Schweizer Postleitzahl wurde nicht gefunden.
-         </span>
-             )}
-
-            {error && (
-                <span id={`${name}-error`} className={styles.errorMessage}>
-          {error}
-        </span>
-            )}
+            <span
+                id={`${name}-error`}
+                className={[
+                    styles.errorMessage,
+                    !postalCodeErrorMessage ? styles.errorMessageHidden : "",
+                ]
+                    .filter(Boolean)
+                    .join(" ")}
+            >
+                {postalCodeErrorMessage || "\u00a0"}
+            </span>
         </div>
     );
 }

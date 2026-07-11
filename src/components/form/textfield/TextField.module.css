@@ -46,6 +46,12 @@
 }
 
 .errorMessage {
+    display: block;
+    min-height: 1.2em;
     font-size: var(--form-message-font-size);
     color: var(--color-status-error);
+}
+
+.errorMessageHidden {
+    visibility: hidden;
 }

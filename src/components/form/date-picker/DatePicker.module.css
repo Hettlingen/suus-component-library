@@ -95,6 +95,12 @@
 }
 
 .errorMessage {
+    display: block;
+    min-height: 1.2em;
     font-size: 13px;
     color: #de6565;
+}
+
+.errorMessageHidden {
+    visibility: hidden;
 }

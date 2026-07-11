@@ -26,8 +26,14 @@
 }
 
 .errorMessage {
+    display: block;
+    min-height: 1.2em;
     font-size: var(--form-message-font-size);
     color: var(--form-message-error-text-color);
+}
+
+.errorMessageHidden {
+    visibility: hidden;
 }
 
 /* Progressive Enhancement für moderne Customizable Selects */
