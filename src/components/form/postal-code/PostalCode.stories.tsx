@@ -35,7 +35,7 @@ const mockLocalities = [
 ];
 
 const meta = {
-    title: "Components/PostalCode",
+    title: "Form/PostalCode",
     component: PostalCode,
     parameters: {
         layout: "centered",

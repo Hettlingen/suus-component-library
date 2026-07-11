@@ -33,18 +33,11 @@ export default function TextField({
                                       ...rest
                                   }: TextFieldProps) {
     return (
-        <div
-            className={[
-                "inputBlockVertical",
-                styles.inputBlockVerticalTight,
-            ]
-                .filter(Boolean)
-                .join(" ")}
-        >
+        <div className="inputBlockVertical">
             <label
                 htmlFor={name}
                 className={[
-                    "inputLabel",
+                    styles.inputLabel,
                     variant === "glassy" ? "inputLabelGlassy" : "",
                 ]
                     .filter(Boolean)

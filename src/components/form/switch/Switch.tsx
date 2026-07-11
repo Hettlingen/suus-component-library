@@ -24,65 +24,67 @@ export default function Switch({
     const switchId = id ?? `${name}-switch`;
 
     return (
-        <div
-            className={[
-                styles.switchWrapper,
-                className ?? "",
-            ]
-                .filter(Boolean)
-                .join(" ")}
-        >
-            <input
-                id={switchId}
-                name={name}
-                type="checkbox"
-                disabled={disabled}
-                className={styles.switchCheckbox}
-                aria-invalid={!!error}
-                aria-describedby={error ? `${name}-error` : undefined}
-                {...rest}
-            />
-
-            <label
-                htmlFor={switchId}
+        <div className="inputBlockHorizontal">
+            <div
                 className={[
-                    styles.switchLabel,
-                    variant === "glassy"
-                        ? styles.switchLabelGlassy
-                        : styles.switchLabelDefault,
+                    styles.switchWrapper,
+                    className ?? "",
                 ]
                     .filter(Boolean)
                     .join(" ")}
             >
-                <span
+                <input
+                    id={switchId}
+                    name={name}
+                    type="checkbox"
+                    disabled={disabled}
+                    className={styles.switchCheckbox}
+                    aria-invalid={!!error}
+                    aria-describedby={error ? `${name}-error` : undefined}
+                    {...rest}
+                />
+
+                <label
+                    htmlFor={switchId}
                     className={[
-                        styles.switchBackground,
+                        styles.switchLabel,
                         variant === "glassy"
-                            ? styles.switchBackgroundGlassy
-                            : styles.switchBackgroundDefault,
+                            ? styles.switchLabelGlassy
+                            : styles.switchLabelDefault,
                     ]
                         .filter(Boolean)
                         .join(" ")}
                 >
-                    <span className={styles.switchButton} aria-hidden="true">
-                        <span className={styles.iconChecked}>
-                            <CheckIcon />
-                        </span>
+                    <span
+                        className={[
+                            styles.switchBackground,
+                            variant === "glassy"
+                                ? styles.switchBackgroundGlassy
+                                : styles.switchBackgroundDefault,
+                        ]
+                            .filter(Boolean)
+                            .join(" ")}
+                    >
+                        <span className={styles.switchButton} aria-hidden="true">
+                            <span className={styles.iconChecked}>
+                                <CheckIcon />
+                            </span>
 
-                        <span className={styles.iconUnchecked}>
-                            <CloseIcon />
+                            <span className={styles.iconUnchecked}>
+                                <CloseIcon />
+                            </span>
                         </span>
                     </span>
-                </span>
 
-                {label && <span className={styles.switchText}>{label}</span>}
-            </label>
+                    {label && <span className={styles.switchText}>{label}</span>}
+                </label>
 
-            {error && (
-                <span id={`${name}-error`} className={styles.errorMessage}>
-                    {error}
-                </span>
-            )}
+                {error && (
+                    <span id={`${name}-error`} className={styles.errorMessage}>
+                        {error}
+                    </span>
+                )}
+            </div>
         </div>
     );
 }

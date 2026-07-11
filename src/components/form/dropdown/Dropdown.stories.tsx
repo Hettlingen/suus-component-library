@@ -41,7 +41,7 @@ const countryOptions = [
 ];
 
 const meta = {
-    title: "Components/Dropdown",
+    title: "Form/Dropdown",
     component: Dropdown,
     parameters: {
         layout: "centered",

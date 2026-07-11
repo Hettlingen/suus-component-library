@@ -49,86 +49,81 @@ export default function RadioButton({
     const isControlled = value !== undefined;
 
     return (
-        <fieldset
-            className={[
-                styles.radioGroup
-            ]
-                .filter(Boolean)
-                .join(" ")}
-            aria-invalid={!!error}
-            aria-describedby={error ? `${name}-error` : undefined}
-        >
-            {label && (
-                <legend
-                    className={[
-                        styles.radioLegend,
-                        variant === "glassy" ? "inputLabelGlassy" : "inputLabel",
-                    ]
-                        .filter(Boolean)
-                        .join(" ")}
-                >
-                    {label}
-                </legend>
-            )}
+        <div className="inputBlockVertical">
+            <fieldset
+                className={[
+                    styles.radioGroup
+                ]
+                    .filter(Boolean)
+                    .join(" ")}
+                aria-invalid={!!error}
+                aria-describedby={error ? `${name}-error` : undefined}
+            >
+                {label && (
+                    <legend className={variant === "glassy" ? "inputLabelGlassy" : "inputLabel"}>
+                        {label}
+                    </legend>
+                )}
 
-            <div className={styles.optionGroup}>
-                {options.map((option) => {
-                    const checkedProps = isControlled
-                        ? { checked: value === option.value }
-                        : { defaultChecked: defaultValue === option.value };
+                <div className={styles.optionGroup}>
+                    {options.map((option) => {
+                        const checkedProps = isControlled
+                            ? { checked: value === option.value }
+                            : { defaultChecked: defaultValue === option.value };
 
-                    return (
-                        <label
-                            key={option.value}
-                            className={[
-                                styles.optionWrapper,
-                                disabled ? styles.optionWrapperDisabled : "",
-                            ]
-                                .filter(Boolean)
-                                .join(" ")}
-                        >
-                            <input
-                                type="radio"
-                                name={name}
-                                value={option.value}
-                                disabled={disabled}
-                                className={styles.radioInput}
-                                onChange={onChange}
-                                {...checkedProps}
-                                {...rest}
-                            />
-
-                            <span
+                        return (
+                            <label
+                                key={option.value}
                                 className={[
-                                    styles.optionButton,
-                                    variant === "glassy"
-                                        ? styles.optionButtonGlassy
-                                        : styles.optionButtonDefault,
-                                    error ? styles.optionButtonError : "",
+                                    styles.optionWrapper,
+                                    disabled ? styles.optionWrapperDisabled : "",
                                 ]
                                     .filter(Boolean)
                                     .join(" ")}
                             >
-                                <span className={styles.optionTitle}>
-                                    {option.label}
-                                </span>
+                                <input
+                                    type="radio"
+                                    name={name}
+                                    value={option.value}
+                                    disabled={disabled}
+                                    className={styles.radioInput}
+                                    onChange={onChange}
+                                    {...checkedProps}
+                                    {...rest}
+                                />
 
-                                {option.description && (
-                                    <span className={styles.optionDescription}>
-                                        {option.description}
+                                <span
+                                    className={[
+                                        styles.optionButton,
+                                        variant === "glassy"
+                                            ? styles.optionButtonGlassy
+                                            : styles.optionButtonDefault,
+                                        error ? styles.optionButtonError : "",
+                                    ]
+                                        .filter(Boolean)
+                                        .join(" ")}
+                                >
+                                    <span className={styles.optionTitle}>
+                                        {option.label}
                                     </span>
-                                )}
-                            </span>
-                        </label>
-                    );
-                })}
-            </div>
 
-            {error && (
-                <span id={`${name}-error`} className={styles.errorMessage}>
-                    {error}
-                </span>
-            )}
-        </fieldset>
+                                    {option.description && (
+                                        <span className={styles.optionDescription}>
+                                            {option.description}
+                                        </span>
+                                    )}
+                                </span>
+                            </label>
+                        );
+                    })}
+                </div>
+
+                {error && (
+                    <span id={`${name}-error`} className={styles.errorMessage}>
+                        {error}
+                    </span>
+                )}
+            </fieldset>
+        </div>
     );
 }

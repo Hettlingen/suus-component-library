@@ -5,10 +5,8 @@
 .radioGroup {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     width: 100%;
-    margin: 0;
-    padding: 0;
     border: 0;
     min-inline-size: 0;
     margin-bottom: 16px;
@@ -111,9 +109,6 @@
 /* -------------------------------------------- */
 /* DEFAULT                                      */
 /* -------------------------------------------- */
-.radioLegend {
-    margin-bottom: 12px;
-}
 
 .optionButtonDefault {
     background-color: var(--form-input-default-background-enabled, #ffffff);

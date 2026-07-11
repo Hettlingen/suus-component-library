@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import Chip from "./Chip";
 
 const meta = {
-    title: "Components/Chip",
+    title: "Form/Chip",
     component: Chip,
     parameters: {
         layout: "centered",
@@ -202,4 +202,3 @@ export const NonClickable: Story = {
         clickable: false,
     },
 };
-

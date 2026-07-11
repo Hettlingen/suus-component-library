@@ -23,7 +23,7 @@ const createMockPdfFile = () => {
 };
 
 const meta = {
-    title: "Components/Upload",
+    title: "Form/Upload",
     component: Upload,
     parameters: {
         layout: "centered",

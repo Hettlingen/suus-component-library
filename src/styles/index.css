@@ -11,6 +11,12 @@ body {
     font-family: var(--typeface-font-family-sans-serif), sans-serif;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 button,
 input,
 select,
@@ -25,15 +31,9 @@ textarea {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    height: 110px;
+    align-items: flex-start; /* Elemente links ausrichten */
     text-align: left;
-    margin-bottom: 16px;
-}
-
-@media (max-width: 1024px) {
-    .inputBlockVertical {
-        margin-bottom: 8px;
-    }
+    margin-bottom: clamp(16px, calc(16px + 0.78125vw), 24px);
 }
 
 .inputBlockHorizontal {
@@ -41,7 +41,7 @@ textarea {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: clamp(16px, calc(16px + 0.78125vw), 24px);
 }
 
 .inputLabel {

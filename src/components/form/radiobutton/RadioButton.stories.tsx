@@ -33,7 +33,7 @@ const paymentOptions = [
 ];
 
 const meta = {
-    title: "Components/RadioButton",
+    title: "Form/RadioButton",
     component: RadioButton,
     parameters: {
         layout: "centered",

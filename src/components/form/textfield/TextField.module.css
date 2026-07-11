@@ -1,52 +1,51 @@
-.inputBlockVerticalTight {
-    --form-input-block-gap: 6px;
+.inputLabel {
     width: 100%;
 }
 
 .inputTextField {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid #dfdfdf;
-    border-radius: 12px;
+    border: 1px solid var(--form-input-default-border-color-enabled);
+    border-radius: var(--form-input-radius);
     font-size: 1rem;
-    color: #272727;
-    background-color: #ffffff;
+    color: var(--color-text-dark);
+    background-color: var(--color-form-background-enabled);
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .inputTextField:focus {
-    border-color: #d9ab29;
+    border-color: var(--color-border-focus);
     box-shadow: 0 0 0 3px rgba(217, 171, 41, 0.18);
 }
 
 .inputTextFieldGlassy {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 12px;
+    border: 1px solid var(--form-input-glassy-border-color-enabled);
+    border-radius: var(--form-input-radius);
     font-size: 1rem;
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.16);
+    color: var(--color-text-light);
+    background-color: var(--color-form-glassy-background-enabled);
     backdrop-filter: blur(14px);
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .inputTextFieldGlassy::placeholder {
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--form-input-glassy-text-placeholder);
 }
 
 .inputTextFieldGlassy:focus {
-    border-color: rgba(255, 255, 255, 0.75);
+    border-color: var(--color-border-focus);
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
 }
 
 .inputError {
-    border-color: #de6565;
+    border-color: var(--color-status-error);
 }
 
 .errorMessage {
-    font-size: 0.8rem;
-    color: #de6565;
+    font-size: var(--form-message-font-size);
+    color: var(--color-status-error);
 }

@@ -4,7 +4,7 @@ import IconButton from "./IconButton.tsx";
 import { PenIcon } from "../../icons/PenIcon";
 
 const meta = {
-    title: "Components/IconButton",
+    title: "Form/IconButton",
     component: IconButton,
     parameters: {
         layout: "centered",

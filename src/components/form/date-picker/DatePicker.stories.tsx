@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import DatePicker from "./DatePicker";
 
 const meta = {
-    title: "Components/DatePicker",
+    title: "Form/DatePicker",
     component: DatePicker,
     parameters: {
         layout: "centered",
