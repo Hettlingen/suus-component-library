@@ -132,7 +132,7 @@
 
 .radioInput:not(:checked):not(:disabled) + .optionButtonDefault:hover {
     background-color: var(--form-input-default-background-hover, #a7b325);
-    border-color: var(--form-input-default-border-color-hover, #a7b325);
+    color: #ffffff;
 }
 
 .radioInput:focus-visible + .optionButtonDefault {
@@ -145,7 +145,7 @@
 /* -------------------------------------------- */
 
 .optionButtonGlassy {
-    background-color: rgba(255, 255, 255, 0.72);
+    background-color: var(--color-form-glassy-background-enabled);
     border-color: rgba(255, 255, 255, 0.2);
     color: rgba(255, 255, 255, 0.86);
     backdrop-filter: blur(12px);
@@ -154,12 +154,13 @@
 
 .radioInput:not(:checked):not(:disabled) + .optionButtonGlassy:hover {
     background-color: rgba(255, 255, 255, 0.82);
+    color: var(--color-green-dark, #889829);
 }
 
 .radioInput:checked + .optionButtonGlassy {
     background-color: var(--color-green-bright, #dbf057);
     border-color: var(--color-green-bright, #dbf057);
-    color: #ffffff;
+    color: var(--color-green-dark, #889829);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
@@ -167,9 +168,6 @@
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
 }
-
-/* Error sollte bewusst nach den Varianten kommen,
-   damit der Error-Border nicht überschrieben wird. */
 
 .optionButtonError {
     border-color: #de6565;

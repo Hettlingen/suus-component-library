@@ -60,9 +60,17 @@ export default function RadioButton({
                 aria-describedby={`${name}-error`}
             >
                 {label && (
-                    <legend className={variant === "glassy" ? "inputLabelGlassy" : "inputLabel"}>
+                    <label
+                        htmlFor={name}
+                        className={[
+                            styles.inputLabel,
+                            variant === "glassy" ? "inputLabelGlassy" : "",
+                        ]
+                            .filter(Boolean)
+                            .join(" ")}
+                    >
                         {label}
-                    </legend>
+                    </label>
                 )}
 
                 <div className={styles.optionGroup}>
