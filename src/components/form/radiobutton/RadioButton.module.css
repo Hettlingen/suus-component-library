@@ -9,7 +9,8 @@
     width: 100%;
     border: 0;
     min-inline-size: 0;
-    margin-bottom: 16px;
+    padding-block: 0;
+    padding-inline: 0;
 }
 
 .optionGroup {
