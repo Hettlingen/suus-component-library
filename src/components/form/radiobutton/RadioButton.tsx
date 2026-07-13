@@ -64,7 +64,7 @@ export default function RadioButton({
                         htmlFor={name}
                         className={[
                             styles.inputLabel,
-                            variant === "glassy" ? "inputLabelGlassy" : "",
+                            variant === "glassy" ? "--form-input-glassy-text-label" : "--form-input-default-text-label",
                         ]
                             .filter(Boolean)
                             .join(" ")}

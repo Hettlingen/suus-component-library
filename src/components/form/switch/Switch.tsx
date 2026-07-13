@@ -55,6 +55,8 @@ export default function Switch({
                         .filter(Boolean)
                         .join(" ")}
                 >
+                    {label && <span className={styles.switchText}>{label}</span>}
+
                     <span
                         className={[
                             styles.switchBackground,
@@ -75,8 +77,6 @@ export default function Switch({
                             </span>
                         </span>
                     </span>
-
-                    {label && <span className={styles.switchText}>{label}</span>}
                 </label>
 
                 <span

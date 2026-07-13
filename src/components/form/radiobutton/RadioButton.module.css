@@ -160,7 +160,7 @@
 
 .radioInput:checked + .optionButtonGlassy {
     background-color: var(--color-green-midnight, #596414);
-    border-color: var(--color-green-default, #dbf057);
+    border-color: var(--form-input-glassy-border-color-selected, #ffffff);
     border-width: 2px;
     color: #ffffff;
     box-shadow: 0 0 0 1px var(--color-green-bright, #dbf057);
