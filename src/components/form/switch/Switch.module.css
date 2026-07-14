@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  width: 100%;
 }
 
 .switchCheckbox {
@@ -13,10 +14,11 @@
 }
 
 .switchLabel {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
-  width: fit-content;
+  width: 100%;
   cursor: pointer;
   user-select: none;
 }
@@ -198,9 +200,11 @@
 /* ---------------------------------------------- */
 
 .switchText {
+  flex: 1;
   font-size: 15px;
   line-height: 1.4;
   color: currentColor;
+  white-space: nowrap;
 }
 
 .errorMessage {

@@ -174,6 +174,21 @@ export const GlassyError: Story = {
     },
 };
 
+export const MultipleLabels: Story = {
+    parameters: {
+        layout: "padded",
+    },
+    render: () => (
+        <div style={{ display: "flex", flexDirection: "column", maxWidth: "500px" }}>
+            <Switch name="notifications" label="Benachrichtigungen aktivieren" defaultChecked />
+            <Switch name="newsletter" label="Newsletter abonnieren" />
+            <Switch name="darkmode" label="Dunkelmodus" defaultChecked />
+            <Switch name="location" label="Standortfreigabe erlauben" />
+            <Switch name="sync" label="Automatisch synchronisieren" defaultChecked />
+        </div>
+    ),
+};
+
 export const Controlled: Story = {
     render: () => {
         const [isActive, setIsActive] = useState(false);
