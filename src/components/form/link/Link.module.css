@@ -51,6 +51,10 @@
   transform: translateX(3px);
 }
 
+.appLink:hover .iconLeft {
+  transform: translateX(-3px);
+}
+
 .arrowIcon {
   width: 18px;
   height: 18px;

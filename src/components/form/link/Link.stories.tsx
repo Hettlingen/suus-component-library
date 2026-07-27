@@ -21,6 +21,10 @@ const meta = {
         showArrow: {
             control: "boolean",
         },
+        arrowPosition: {
+            control: "select",
+            options: ["left", "right"],
+        },
         variant: {
             control: "select",
             options: ["default", "glassy"],
@@ -37,6 +41,7 @@ const meta = {
         href: "/shop",
         newTab: false,
         showArrow: true,
+        arrowPosition: "right",
         variant: "default",
     },
 } satisfies Meta<typeof Link>;
@@ -47,6 +52,15 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     args: {
+        children: "Mehr erfahren",
+        href: "/about",
+        variant: "default",
+        showArrow: false,
+    },
+};
+
+export const ArrowRight: Story = {
+    args: {
         children: "Zum Shop",
         href: "/shop",
         variant: "default",
@@ -54,12 +68,13 @@ export const Default: Story = {
     },
 };
 
-export const WithoutArrow: Story = {
+export const ArrowLeft: Story = {
     args: {
-        children: "Mehr erfahren",
-        href: "/about",
+        children: "Zurück",
+        href: "/shop",
         variant: "default",
-        showArrow: false,
+        showArrow: true,
+        arrowPosition: "left",
     },
 };
 
@@ -77,15 +92,6 @@ export const ActionLink: Story = {
     args: {
         children: "Mehr anzeigen",
         href: undefined,
-        variant: "default",
-        showArrow: true,
-    },
-};
-
-export const LongText: Story = {
-    args: {
-        children: "Mehr über unsere biologischen Drinks erfahren",
-        href: "/shop",
         variant: "default",
         showArrow: true,
     },
