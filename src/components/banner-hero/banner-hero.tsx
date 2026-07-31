@@ -17,6 +17,7 @@ export interface BannerHeroProps {
     actionButtonPrimary?(): void;
     labelButtonSecondary?: string;
     actionButtonSecondary?(): void;
+    gradientOverlay?: boolean;
 }
 
 export type BannerColorToken =
@@ -61,6 +62,7 @@ export default function BannerHero({
    actionButtonPrimary,
    labelButtonSecondary,
    actionButtonSecondary,
+   gradientOverlay = false,
 }: BannerHeroProps) {
    const [failedSourceKey, setFailedSourceKey] = useState<string | null>(null);
 
@@ -89,6 +91,8 @@ export default function BannerHero({
                    alt="background"
                    onError={shouldUseBackgroundImage ? () => setFailedSourceKey(sourceKey) : undefined}
                />
+
+               {gradientOverlay && <div className="hero__gradient-overlay" aria-hidden="true" />}
 
                <div
                    className="hero__content"

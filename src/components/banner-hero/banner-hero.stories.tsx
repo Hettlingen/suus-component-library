@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import BannerHero from "./banner-hero";
 import bannerFallbackImage from "./assets/banner-fallback.webp";
+import bannerShopDesktop from "./assets/banner-shop-desktop.webp";
+import bannerShopTablet from "./assets/banner-shop-tablet.webp";
+import bannerShopMobile from "./assets/banner-shop-mobile.webp";
 
 const createBannerImage = (label: string, startColor: string, endColor: string) =>
     `data:image/svg+xml;utf8,${encodeURIComponent(
@@ -19,7 +22,6 @@ const createBannerImage = (label: string, startColor: string, endColor: string) 
 const desktopImage = createBannerImage("Desktop 2400w", "#5aa07a", "#2f6c50");
 const tabletImage = createBannerImage("Tablet 1600w", "#5296b8", "#2d5874");
 const mobileImage = createBannerImage("Mobile 900w", "#b8649f", "#704066");
-const customFallbackImage = createBannerImage("Custom Fallback", "#eb9853", "#a15b28");
 
 const meta = {
     title: "Components/BannerHero",
@@ -67,7 +69,18 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const DefaultResponsive: Story = {};
+export const WithoutButtons: Story = {
+
+};
+
+export const ImageWithoutButtons: Story = {
+    args: {
+        colorToken: "--color-juice-sugarcane",
+        imageBackgroundDesktop: bannerShopDesktop,
+        imageBackgroundTablet: bannerShopTablet,
+        imageBackgroundMobile: bannerShopMobile,
+    },
+};
 
 export const WithButtons: Story = {
     args: {
@@ -77,7 +90,39 @@ export const WithButtons: Story = {
     },
 };
 
-export const InternalFallback: Story = {
+export const ImageWithButtons: Story = {
+    args: {
+        colorToken: "--color-juice-sugarcane",
+        labelButtonPrimary: "Jetzt entdecken",
+        labelButtonSecondary: "Mehr erfahren",
+        imageBackgroundDesktop: bannerShopDesktop,
+        imageBackgroundTablet: bannerShopTablet,
+        imageBackgroundMobile: bannerShopMobile,
+    },
+};
+
+export const WithButtonsAndGradient: Story = {
+    args: {
+        colorToken: "--color-text-light",
+        labelButtonPrimary: "Jetzt entdecken",
+        labelButtonSecondary: "Mehr erfahren",
+        gradientOverlay: true
+    },
+};
+
+export const ImageWithButtonsAndGradient: Story = {
+    args: {
+        colorToken: "--color-text-light",
+        labelButtonPrimary: "Jetzt entdecken",
+        labelButtonSecondary: "Mehr erfahren",
+        imageBackgroundDesktop: bannerShopDesktop,
+        imageBackgroundTablet: bannerShopTablet,
+        imageBackgroundMobile: bannerShopMobile,
+        gradientOverlay: true
+    },
+};
+
+export const FallbackIfNoImageIsConfigured: Story = {
     args: {
         imageBackgroundDesktop: "",
         imageBackgroundTablet: "",
@@ -85,16 +130,7 @@ export const InternalFallback: Story = {
     },
 };
 
-export const CustomFallbackOverride: Story = {
-    args: {
-        imageBackgroundDesktop: "https://example.invalid/banner-does-not-exist.webp",
-        imageBackgroundTablet: "",
-        imageBackgroundMobile: "",
-        fallbackImageSrc: customFallbackImage,
-    },
-};
-
-export const AssetFallbackWebp: Story = {
+export const FallbackIfImageNotFound: Story = {
     args: {
         imageBackgroundDesktop: "https://example.invalid/banner-does-not-exist.webp",
         imageBackgroundTablet: "",
