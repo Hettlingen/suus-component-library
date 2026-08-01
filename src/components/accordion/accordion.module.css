@@ -1,0 +1,13 @@
+.accordion {
+    width: 100%;
+    border-radius: var(--form-input-radius, 14px);
+    overflow: hidden;
+    border: 1px solid var(--form-input-default-border-color-enabled, #d1d5db);
+    background: var(--form-input-default-background-enabled, #ffffff);
+}
+
+.glassy {
+    border-color: var(--form-input-glassy-border-color-enabled, rgba(255, 255, 255, 0.35));
+    background: var(--form-input-glassy-background-enabled, rgba(255, 255, 255, 0.16));
+    backdrop-filter: blur(14px);
+}
