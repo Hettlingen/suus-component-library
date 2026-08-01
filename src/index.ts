@@ -9,6 +9,12 @@ export type { ButtonProps, ColorToken } from "./components/form/button/Button";
 export { default as BannerHero } from "./components/banner-hero/banner-hero";
 export type { BannerHeroProps, BannerColorToken } from "./components/banner-hero/banner-hero";
 
+export { default as Accordion } from "./components/accordion/accordion";
+export type { AccordionProps, AccordionVariant } from "./components/accordion/accordion";
+
+export { default as TileAccordion } from "./components/accordion/components/tile-accordion";
+export type { TileAccordionProps } from "./components/accordion/components/tile-accordion";
+
 export { default as Checkbox } from "./components/form/checkbox/Checkbox";
 export type { CheckboxProps } from "./components/form/checkbox/Checkbox";
 
