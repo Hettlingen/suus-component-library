@@ -32,7 +32,9 @@ Der Button verwendet ausschliesslich semantic Design Tokens.
                 "--color-juice-sugarcane",
                 "--color-juice-tamarind",
                 "--color-juice-guava",
-                "--color-juice-icetea"
+                "--color-juice-icetea",
+                "--color-text-light",
+                "--color-text-dark",
             ]
         }
     }

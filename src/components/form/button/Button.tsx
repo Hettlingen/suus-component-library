@@ -5,7 +5,9 @@ export type ColorToken =
     | "--color-juice-sugarcane"
     | "--color-juice-tamarind"
     | "--color-juice-guarana"
-    | "--color-juice-icetea";
+    | "--color-juice-icetea"
+    | "--color-text-light"
+    | "--color-text-dark";
 
 export type ButtonProps = {
     label: string;

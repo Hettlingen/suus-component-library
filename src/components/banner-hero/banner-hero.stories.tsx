@@ -57,8 +57,8 @@ const meta = {
         actionButtonSecondary: { control: false },
     },
     args: {
-        title: "Entdecke unsere Getränke",
-        description: "Saisonale Getränke mit natürlichen Zutaten\njetzt in deiner Nähe erhältlich.",
+        title: "Quench your thirst",
+        description: "Refresh yourself with drinks that are as real as nature itself.",
         imageBackgroundDesktop: desktopImage,
         imageBackgroundTablet: tabletImage,
         imageBackgroundMobile: mobileImage,
