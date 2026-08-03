@@ -1,6 +1,6 @@
 {
   "name": "suus-component-library",
-  "version": "0.1.30",
+  "version": "0.1.31",
   "type": "module",
   "main": "./dist/suus-component-library.umd.cjs",
   "module": "./dist/suus-component-library.js",
