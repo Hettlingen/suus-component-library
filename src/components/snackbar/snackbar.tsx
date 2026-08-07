@@ -1,7 +1,7 @@
 import styles from './snackbar.module.css';
 import {useEffect} from "react";
 
-interface SnackbarProps {
+export interface SnackbarProps {
     message: string;
     isOpen: boolean;
     onClose: () => void;

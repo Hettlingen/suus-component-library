@@ -33,6 +33,9 @@ export type { LinkProps } from "./components/form/link/Link";
 export { default as IconButton } from "./components/form/icon-button/IconButton";
 export type { IconButtonProps } from "./components/form/icon-button/IconButton";
 
+export { default as Icon } from "./components/icon/icon";
+export type { IconProps } from "./components/icon/icon";
+
 export { default as Password } from "./components/form/password/Password";
 export type { PasswordProps } from "./components/form/password/Password";
 
@@ -44,6 +47,9 @@ export type { RadioButtonProps, RadioButtonOption } from "./components/form/radi
 
 export { default as Switch} from "./components/form/switch/Switch";
 export type { SwitchProps } from "./components/form/switch/Switch";
+
+export { default as Snackbar } from "./components/snackbar/snackbar";
+export type { SnackbarProps } from "./components/snackbar/snackbar";
 
 export { default as TextField} from "./components/form/textfield/TextField";
 export type { TextFieldProps } from "./components/form/textfield/TextField";

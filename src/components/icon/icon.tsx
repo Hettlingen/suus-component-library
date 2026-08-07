@@ -1,6 +1,6 @@
 import styles from './icon.module.css'
 
-type IconProps = {
+export type IconProps = {
     icon: React.ReactNode;           // z.B. ein Lucide- oder Material-Icon
     badgeCount?: number;             // Wenn 0 oder undefined, kein Badge
     size?: number;                   // Icon-Größe (optional)
