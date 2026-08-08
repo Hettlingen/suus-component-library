@@ -1,6 +1,6 @@
 import styles from "./counter.module.css";
 
-type CounterProps = {
+export type CounterProps = {
     value: number;
     onChange: (value: number) => void;
     min?: number;

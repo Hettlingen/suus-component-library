@@ -21,7 +21,7 @@ export interface AvatarProps {
     children?: React.ReactNode;
 }
 
-export default function Avatar({
+export function Avatar({
                                  src,
                                  alt = 'Avatar',
                                  size = 40,

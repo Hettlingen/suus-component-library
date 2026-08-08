@@ -56,3 +56,15 @@ export type { TextFieldProps } from "./components/form/textfield/TextField";
 
 export { default as Upload} from "./components/form/upload/Upload";
 export type { UploadProps } from "./components/form/upload/Upload";
+
+export { Counter } from "./components/counter/counter";
+export type { CounterProps } from "./components/counter/counter";
+
+export { Avatar } from "./components/avatar/avatar";
+export type { AvatarProps } from "./components/avatar/avatar";
+
+export { StarRating } from "./components/star-rating/star-rating";
+export type { StarRatingProps } from "./components/star-rating/star-rating";
+
+export { StepperVertical } from "./components/stepper-vertical/stepper-vertical";
+export type { StepperVerticalProps, StepperVerticalStepProps } from "./components/stepper-vertical/stepper-vertical";

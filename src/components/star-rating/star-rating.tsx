@@ -1,7 +1,7 @@
 // components/StarRating.tsx
 import {useState} from 'react';
 
-type StarRatingProps = {
+export type StarRatingProps = {
     value: number;
     onChange?: (value: number) => void;
     max?: number;

@@ -1,7 +1,7 @@
 import styles from "./stepper-vertical.module.css";
 import React, { Children, cloneElement, isValidElement, useEffect, useMemo, useRef, useState } from "react";
 
-type Props = {
+export type StepperVerticalProps = {
     stepTitles: string[];
     children: React.ReactNode;
     onFinish?: () => void | Promise<void>;
@@ -15,12 +15,12 @@ export type StepperVerticalStepProps = {
     isLastStep: boolean;
 };
 
-export default function StepperVertical({
+export function StepperVertical({
                                             stepTitles,
                                             children,
                                             onFinish,
                                             initialStep = 0,
-                                        }: Props) {
+                                        }: StepperVerticalProps) {
     const steps = useMemo(
         () => Children.toArray(children).filter(isValidElement),
         [children]
