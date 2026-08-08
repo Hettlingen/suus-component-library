@@ -8,7 +8,7 @@ export type IconProps = {
     className?: string;             // Zusätzliche Klassen für Wrapper
 };
 
-function Icon({
+export default function Icon({
                   icon,
                   badgeCount,
                   size = 32,
@@ -31,5 +31,3 @@ function Icon({
         </div>
     )
 }
-
-export default Icon

@@ -9,7 +9,7 @@ export interface SnackbarProps {
     type?: 'success' | 'info' | 'warning' | 'error';
 }
 
-function Snackbar({
+export default function Snackbar({
                       message,
                       isOpen,
                       onClose,
@@ -33,5 +33,3 @@ function Snackbar({
         </div>
     );
 };
-
-export default Snackbar
