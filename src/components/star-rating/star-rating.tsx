@@ -1,11 +1,16 @@
 // components/StarRating.tsx
-import {useState} from 'react';
+import {useState} from "react";
+import type {ColorToken as ButtonColorToken} from "../form/button/Button";
+
+export type StarRatingColorToken = ButtonColorToken | "--color-gold-default";
 
 export type StarRatingProps = {
     value: number;
     onChange?: (value: number) => void;
     max?: number;
     readOnly?: boolean;
+    colorToken?: StarRatingColorToken;
+    reviewCount?: number;
 };
 
 /**
@@ -23,14 +28,17 @@ export type StarRatingProps = {
  * @param onChange
  * @param max
  * @param readOnly
+ * @param reviewCount
  * @constructor
  */
 export function StarRating({
-                        value,
-                        onChange,
-                        max = 5,
-                        readOnly = false,
-                    }: StarRatingProps) {
+    value,
+    onChange,
+    max = 5,
+    readOnly = false,
+    colorToken = "--color-gold-default",
+    reviewCount = 23,
+}: StarRatingProps) {
 
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -53,28 +61,29 @@ export function StarRating({
     };
 
     return (
-        <div style={{ display: 'flex', gap: '0.25rem' }}>
+        <div style={{display: "flex", gap: "0.25rem"}}>
             {Array.from({ length: max }).map((_, i) => {
                 const isFilled = hoveredIndex !== null ? i <= hoveredIndex : i < value;
+                const filledColor = `var(${colorToken})`;
 
                 return (
                     <span
-                        key={i}
-                        onClick={() => handleClick(i)}
-                        onMouseEnter={() => handleMouseEnter(i)}
-                        onMouseLeave={handleMouseLeave}
-                        style={{
-                            fontSize: '2rem',
-                            color: isFilled ? '#FFD700' : '#CCCCCC',
-                            cursor: readOnly ? 'default' : 'pointer',
-                            transition: 'color 0.2s',
-                        }}
+                       key={i}
+                       onClick={() => handleClick(i)}
+                       onMouseEnter={() => handleMouseEnter(i)}
+                       onMouseLeave={handleMouseLeave}
+                       style={{
+                           fontSize: "2rem",
+                           color: isFilled ? filledColor : "#CCCCCC",
+                           cursor: readOnly ? "default" : "pointer",
+                           transition: "color 0.2s",
+                       }}
                     >
-                        ★
-                     </span>
+                       ★
+                    </span>
                 );
             })}
-            <p>23 Reviews</p>
+            <p style={{color: `var(${colorToken})`}}>{reviewCount} Reviews</p>
         </div>
     );
 };
