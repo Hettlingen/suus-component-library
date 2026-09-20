@@ -6,6 +6,7 @@ export type TextFieldProps = {
     name: string;
     error?: string;
     variant?: "glassy" | "default";
+    type?: "text" | "tel" | "email";
     ref?: Ref<HTMLInputElement>;
 } & InputHTMLAttributes<HTMLInputElement>;
 
@@ -28,6 +29,7 @@ export default function TextField({
                                       error,
                                       placeholder,
                                       variant = "default",
+                                      type = "text",
                                       className,
                                       ref,
                                       ...rest
@@ -50,6 +52,7 @@ export default function TextField({
                 id={name}
                 name={name}
                 ref={ref}
+                type={type}
                 placeholder={placeholder}
                 className={[
                     styles.inputTextField,
