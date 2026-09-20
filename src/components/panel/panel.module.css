@@ -1,0 +1,10 @@
+.panel {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: var(--radius-large);
+    background: linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--color-surface-light) 90%, var(--color-brand-light) 10%) 0%,
+            color-mix(in srgb, var(--color-surface-muted) 88%, var(--color-brand-light) 12%) 100%
+    );
+    box-shadow: var(--shadow-elevation-default);
+}

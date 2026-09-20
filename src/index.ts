@@ -68,3 +68,6 @@ export type { StarRatingProps } from "./components/star-rating/star-rating";
 
 export { StepperVertical } from "./components/stepper-vertical/stepper-vertical";
 export type { StepperVerticalProps, StepperVerticalStepProps } from "./components/stepper-vertical/stepper-vertical";
+
+export { Panel } from "./components/panel/panel";
+export type { PanelProps } from "./components/panel/panel";
