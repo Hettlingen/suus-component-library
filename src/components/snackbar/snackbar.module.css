@@ -25,3 +25,11 @@
 .snackbar--error {
     background: var(--snackbar-background-error);
 }
+
+@media (max-width: 600px) {
+    .snackbar {
+        width: 100%;
+        max-width: 80%;
+        box-sizing: border-box;
+    }
+}
