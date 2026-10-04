@@ -71,3 +71,6 @@ export type { StepperVerticalProps, StepperVerticalStepProps } from "./component
 
 export { Panel } from "./components/panel/panel";
 export type { PanelProps } from "./components/panel/panel";
+
+export { MessageDialog } from "./components/message-dialog/message-dialog";
+export type { MessageDialogProps, MessageDialogType } from "./components/message-dialog/message-dialog";

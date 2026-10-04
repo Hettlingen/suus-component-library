@@ -1,0 +1,128 @@
+.card {
+    --status-color: var(--color-status-success);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--padding-16);
+    padding: var(--padding-48) var(--padding-32);
+    border-radius: var(--radius-large);
+    border: var(--border-default) solid transparent;
+    text-align: center;
+    font-family: var(--typeface-font-family-sans-serif), sans-serif;
+}
+
+.success { --status-color: var(--color-status-success); }
+.info { --status-color: var(--color-status-info); }
+.warning { --status-color: var(--color-status-warning); }
+.error { --status-color: var(--color-status-error); }
+
+/* Variants */
+.default {
+    background: var(--panel-background-white);
+    color: var(--text-content-default);
+    box-shadow: var(--shadow-elevation-default);
+}
+
+.glassy {
+    background: linear-gradient(
+            135deg,
+            var(--panel-background-gradient-top-left-white),
+            var(--panel-background-gradient-bottom-right-white)
+    );
+    border-color: var(--tile-glassy-border-color-default);
+    color: var(--text-content-light);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-elevation-default);
+}
+
+/* Illustration */
+.illustration {
+    width: 10rem;
+    height: 10rem;
+}
+
+.circle {
+    fill: var(--status-color);
+}
+
+.glassy .circle {
+    fill: color-mix(in srgb, var(--status-color) 55%, white 45%);
+}
+
+.symbol {
+    fill: none;
+    stroke: var(--color-text-light);
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Texts */
+.title {
+    margin: var(--padding-16) 0 0;
+    font: var(--typography-heading-h2);
+    color: var(--text-title-default);
+}
+
+.glassy .title {
+    color: var(--text-title-glassy);
+}
+
+.description {
+    margin: 0;
+    max-width: 28rem;
+    font: var(--typography-body-small);
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--padding-16);
+    margin-top: var(--padding-16);
+}
+
+.glassy .primary button {
+    background: transparent;
+    color: var(--color-text-light);
+    border-color: var(--color-text-light);
+    box-shadow: none;
+}
+
+.glassy .primary button:hover:not(:disabled) {
+    background: var(--color-gray-white-transparent-40);
+}
+
+/* Close */
+.close {
+    position: absolute;
+    top: var(--padding-24);
+    right: var(--padding-24);
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+}
+
+.close svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.close:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+    border-radius: var(--radius-small);
+}
