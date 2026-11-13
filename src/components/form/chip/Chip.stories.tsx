@@ -202,3 +202,25 @@ export const NonClickable: Story = {
         clickable: false,
     },
 };
+
+
+export const WithTrailingAction: Story = {
+    render: () => (
+        <Chip
+            clickable={false}
+            variant="glassy"
+            trailingAction={
+                <button type="button" aria-label="Excel entfernen" onClick={() => console.log("remove Excel")}>
+                    ×
+                </button>
+            }
+        >
+            Excel
+        </Chip>
+    ),
+    globals: {
+        backgrounds: {
+            value: "dark",
+        },
+    },
+};

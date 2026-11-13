@@ -13,6 +13,8 @@ export type ChipProps = {
     defaultChecked?: boolean;
     /** Called with the new checked state when the chip is toggled. */
     onCheckedChange?: (checked: boolean) => void;
+    /** Optional trailing control, such as a remove button. Renders the chip as a non-toggleable container. */
+    trailingAction?: ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 
@@ -40,6 +42,7 @@ export default function Chip({
     checked,
     defaultChecked = false,
     onCheckedChange,
+    trailingAction,
     className,
     ...rest
 }: ChipProps) {
@@ -64,16 +67,18 @@ export default function Chip({
 
     const variantClass = variant === "glassy" ? styles.chipGlassy : styles.chipDefault;
     const checkedClass = currentChecked ? styles.chipChecked : "";
-    const disabledClass = !clickable ? styles.chipDisabled : "";
+    const disabledClass = !clickable && !trailingAction ? styles.chipDisabled : "";
+    const trailingActionClass = trailingAction ? styles.chipWithTrailingAction : "";
 
-    if (!clickable) {
+    if (!clickable || trailingAction) {
         return (
             <span
-                className={[styles.chip, variantClass, checkedClass, disabledClass, className ?? ""]
+                className={[styles.chip, variantClass, checkedClass, disabledClass, trailingActionClass, className ?? ""]
                     .filter(Boolean)
                     .join(" ")}
             >
-                {children}
+                {trailingAction ? <span className={styles.chipContent}>{children}</span> : children}
+                {trailingAction ? <span className={styles.chipTrailingAction}>{trailingAction}</span> : null}
             </span>
         );
     }

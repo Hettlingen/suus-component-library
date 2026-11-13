@@ -56,6 +56,22 @@
 .chipDisabled {
     opacity: 0.7;
     cursor: default;
-    pointer-events: none;
+}
+
+.chipWithTrailingAction {
+    justify-content: space-between;
+    gap: 8px;
+    padding-right: 8px;
+}
+
+.chipContent {
+    display: inline-flex;
+    align-items: center;
+}
+
+.chipTrailingAction {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
 }
 
