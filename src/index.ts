@@ -33,6 +33,9 @@ export type { LinkProps } from "./components/form/link/Link";
 export { default as IconButton } from "./components/form/icon-button/IconButton";
 export type { IconButtonProps } from "./components/form/icon-button/IconButton";
 
+export { default as PopupMenu } from "./components/popup-menu/popup-menu";
+export type { MenuItemData } from "./components/popup-menu/popup-menu";
+
 export { default as Icon } from "./components/icon/icon";
 export type { IconProps } from "./components/icon/icon";
 

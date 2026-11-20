@@ -1,0 +1,54 @@
+.popupMenu {
+  position: relative;
+  display: inline-flex;
+}
+
+.triggerButton {
+  color: inherit;
+}
+
+.menu {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  padding: 4px 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--color-surface, #fff);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 18%);
+}
+
+.menuItem {
+  display: flex;
+  width: 100%;
+  min-height: 40px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuItem:hover:not(:disabled),
+.menuItem:focus-visible {
+  background: rgb(0 0 0 / 6%);
+  outline: none;
+}
+
+.menuItem:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.itemIcon {
+  display: inline-flex;
+  flex: 0 0 24px;
+  align-items: center;
+  justify-content: center;
+}
