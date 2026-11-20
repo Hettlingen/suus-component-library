@@ -74,3 +74,6 @@ export type { PanelProps } from "./components/panel/panel";
 
 export { MessageDialog } from "./components/message-dialog/message-dialog";
 export type { MessageDialogProps, MessageDialogType } from "./components/message-dialog/message-dialog";
+
+export { Modal } from "./components/modal/modal";
+export type { ModalProps } from "./components/modal/modal";

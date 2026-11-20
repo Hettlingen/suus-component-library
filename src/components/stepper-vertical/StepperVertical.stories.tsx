@@ -1,6 +1,6 @@
 import type {Meta, StoryObj} from "@storybook/react-vite";
 import type {ComponentProps} from "react";
-import StepperVertical, {type StepperVerticalStepProps} from "./stepper-vertical";
+import {StepperVertical, type StepperVerticalStepProps} from "./stepper-vertical";
 
 function StepOne({onNext = () => {}, isLastStep = false}: Partial<StepperVerticalStepProps>) {
     return (
