@@ -1,10 +1,76 @@
-.panel {
+.panel-container {
+    --panel-title-color: var(--text-title-default);
+    color: var(--text-content-default);
+}
+
+.glassy {
+    --panel-title-color: var(--text-title-glassy);
+    color: var(--text-content-light);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0px 5px;
+}
+
+.panel-title-new {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--panel-title-color);
+}
+
+.icon {
+    background: none;
+    border: none;
+    color: var(--panel-title-color);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.icon.left {
+    margin-left: -12px;
+    margin-right: 18px;
+}
+
+.icon.right {
+    margin-left: 8px;
+    margin-right: -16px;
+}
+
+.panel-content {
     padding: clamp(1.5rem, 3vw, 2.5rem);
-    border-radius: var(--radius-large);
+    border-radius: var(--panel-radius);
     background: linear-gradient(
             135deg,
-            color-mix(in srgb, var(--color-surface-light) 90%, var(--color-brand-light) 10%) 0%,
-            color-mix(in srgb, var(--color-surface-muted) 88%, var(--color-brand-light) 12%) 100%
+            color-mix(in srgb, var(--color-surface-light) 90%, var(--color-brand-light) 10%),
+            color-mix(in srgb, var(--color-surface-muted) 88%, var(--color-brand-light) 12%)
     );
     box-shadow: var(--shadow-elevation-default);
+}
+
+.glassy > .panel-content {
+    padding: 40px 50px;
+    border: 1px solid transparent;
+    background: linear-gradient(
+            to bottom right,
+            rgba(255, 255, 255, 0.20),
+            rgba(255, 255, 255, 0.10)
+    );
+    backdrop-filter: blur(6px);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .glassy > .panel-content {
+        padding: 0;
+        border: none;
+        background: none;
+        backdrop-filter: none;
+        box-shadow: none;
+    }
 }

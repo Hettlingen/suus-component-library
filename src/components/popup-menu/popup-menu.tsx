@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { MoreVertIcon } from "../icons/MoreVertIcon";
 import IconButton from "../form/icon-button/IconButton";
 import styles from "./popup-menu.module.css";
 
@@ -49,7 +49,7 @@ export default function PopupMenu({ items }: FlyoutMenuProps) {
         <div className={styles.popupMenu} ref={menuRef}>
             <IconButton
                 label="Weitere Optionen"
-                icon={<MoreVertIcon />}
+                icon={<MoreVertIcon width={24} height={24} />}
                 frame={false}
                 className={styles.triggerButton}
                 aria-haspopup="menu"

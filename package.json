@@ -6,7 +6,9 @@
   "module": "./dist/suus-component-library.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "licenses",
+    "THIRD-PARTY-NOTICES.md"
   ],
   "exports": {
     ".": {
@@ -50,9 +52,6 @@
     "vite-plugin-dts": "latest"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^7.3.11",
     "msw": "^2.14.6",
     "suus-design-tokens": "^1.0.27"
   }

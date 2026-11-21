@@ -94,23 +94,16 @@
 }
 
 .icon {
+    font-size: 18px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-.svgIcon {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
+.small .icon {
+    font-size: 16px;
 }
 
-.small .svgIcon {
-    width: 16px;
-    height: 16px;
-}
-
-.large .svgIcon {
-    width: 22px;
-    height: 22px;
+.large .icon {
+    font-size: 22px;
 }

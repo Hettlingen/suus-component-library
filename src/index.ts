@@ -38,6 +38,7 @@ export type { MenuItemData } from "./components/popup-menu/popup-menu";
 
 export { default as Icon } from "./components/icon/icon";
 export type { IconProps } from "./components/icon/icon";
+export * from "./components/icons";
 
 export { default as Password } from "./components/form/password/Password";
 export type { PasswordProps } from "./components/form/password/Password";
