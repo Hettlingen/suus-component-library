@@ -8,7 +8,9 @@ export interface PanelProps {
     children: ReactNode;
     variant?: "default" | "glassy";
     className?: string;
+    /** Zeigt das Zurück-Icon und führt den Callback beim Klick aus. */
     onClickBack?: () => void;
+    /** Zeigt das Schliessen-Icon und führt den Callback beim Klick aus. */
     onClickClose?: () => void;
 }
 

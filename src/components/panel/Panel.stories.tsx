@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { fn } from "storybook/test";
 import { Panel } from "./panel";
 
 const meta = {
@@ -34,6 +35,21 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+export const WithBack: Story = {
+    args: { onClickBack: fn() },
+};
+
+export const WithClose: Story = {
+    args: { onClickClose: fn() },
+};
+
+export const WithBackAndClose: Story = {
+    args: {
+        onClickBack: fn(),
+        onClickClose: fn(),
+    },
+};
+
 export const Glassy: Story = {
     args: { variant: "glassy" },
     decorators: [
@@ -43,4 +59,29 @@ export const Glassy: Story = {
             </div>
         ),
     ],
+};
+
+export const GlassyWithBack: Story = {
+    ...Glassy,
+    args: {
+        ...Glassy.args,
+        onClickBack: fn(),
+    },
+};
+
+export const GlassyWithClose: Story = {
+    ...Glassy,
+    args: {
+        ...Glassy.args,
+        onClickClose: fn(),
+    },
+};
+
+export const GlassyWithBackAndClose: Story = {
+    ...Glassy,
+    args: {
+        ...Glassy.args,
+        onClickBack: fn(),
+        onClickClose: fn(),
+    },
 };
